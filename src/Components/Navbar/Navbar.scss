@@ -43,6 +43,7 @@ nav {
 
     a {
       transition: all 0.4s ease;
+      font-size: 19px;
       @include sm {
         display: none;
       }
@@ -57,7 +58,7 @@ nav {
     flex: 2;
     display: flex;
     width: 100vw;
-    overflow-x: hidden;
+    overflow: hidden;
 
     align-items: center;
     justify-content: flex-end;
@@ -119,6 +120,7 @@ nav {
 
     a {
       padding: 12px 24px;
+      font-size: 19px;
       margin: 20px;
       border-radius: 5px;
       transition: all 0.4s ease;

@@ -5,17 +5,17 @@ import { Link } from "react-router-dom";
 import "./List.scss";
 
 const Newlist = () => {
-  const [visibleItems, setVisibleItems] = useState(6); // Initially show 6 items
+  const [visibleItems, setVisibleItems] = useState(6); // Initially show 8 items
 
   const handleViewMore = () => {
-    setVisibleItems((prevVisibleItems) => prevVisibleItems + 6); // Show 6 more items
+    setVisibleItems((prevVisibleItems) => prevVisibleItems + 3); // Show 6 more items
   };
 
   return (
     <>
       <Box
         display="grid"
-        gridTemplateColumns="repeat(auto-fit, minmax(300px, 1fr))"
+        gridTemplateColumns="repeat(auto-fit, minmax(320px, 1fr))"
         gap={6}
       >
         {listData.slice(0, visibleItems).map((item) => (
@@ -32,8 +32,8 @@ const Newlist = () => {
               <Image
                 src={item.img}
                 alt={item.title}
-                width="90%"
-                height="150px"
+                width="100%"
+                height="200px"
                 objectFit="cover"
               />
             </Link>
@@ -49,22 +49,26 @@ const Newlist = () => {
               </Box>
               <Link to={`${item.id}`}>
                 <Box
-                  mt="2"
+                  mt="5"
                   mb="2"
-                  color="#00111"
+                  color="#000"
                   fontWeight="normal"
                   as="h4"
                   lineHeight="tight"
+                  fontSize="19px" // Updated title font size
                 >
                   {item.title}
                 </Box>
               </Link>
-              <Box color="#000" fontWeight="700">
-                ₹{item.price}/night
+              <Box color="#000" fontWeight="700" fontSize="20px">
+                ₹{item.price}/night {/* Updated price font size */}
               </Box>
 
               <Box mt="2">
-                <Text fontSize="sm">{item.address}</Text>
+                <Text fontSize="18px" color="#505050">
+                  {item.address}
+                </Text>{" "}
+                {/* Updated address font size */}
               </Box>
             </Box>
           </Box>
