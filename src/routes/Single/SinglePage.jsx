@@ -1,7 +1,7 @@
 import React from "react";
 import "./SinglePage.scss";
 import MyMap from "../../Components/Map/MyMap";
-import Faq from "../../Components/Faq/Faq";
+// import Faq from "../../Components/Faq/Faq";
 import Slider from "../../Components/slider/Slider";
 import { singlePost, userData } from "../../Lib/dummydata"; // Adjust the path based on your project structure
 

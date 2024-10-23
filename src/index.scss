@@ -7,7 +7,10 @@ a {
   text-decoration: none;
   color: inherit;
 }
+html,
 body {
+  width: 100vw;
+  overflow-x: hidden;
   font-family: "Lato", sans-serif;
   overflow-x: hidden;
 }
