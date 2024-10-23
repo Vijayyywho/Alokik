@@ -1,11 +1,12 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// vite.config.js
 export default {
+  plugins: [react()],
+  external: ["@chakra-ui/icons"], // Externalize Chakra UI Icons
   build: {
     rollupOptions: {
-      external: ["@chakra-ui/react"],
+      external: ["@chakra-ui/icons"],
     },
   },
 };
