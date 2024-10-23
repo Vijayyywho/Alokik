@@ -25,7 +25,7 @@ function Navbar() {
         {isAuthenticated && <h1>hello{user.name}</h1>}
         {isAuthenticated ? (
           <div className="user">
-            <button onClick={(e) => lo()}>Logout</button>
+            <button onClick={(e) => logout()}>Logout</button>
             {/* <img
               src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
               alt=""
