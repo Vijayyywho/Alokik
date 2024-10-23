@@ -5,8 +5,6 @@ import "./index.scss";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { ChakraProvider } from "@chakra-ui/react";
 
-import { ChakraProvider } from "@chakra-ui/react";
-
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Auth0Provider
