@@ -22,10 +22,10 @@ function Navbar() {
         <a href="/agents">Agents</a>
       </div>
       <div className="right">
-        {/* <h1>hello{user.name}</h1> */}
+        {isAuthenticated && <h1>hello{user.name}</h1>}
         {isAuthenticated ? (
           <div className="user">
-            <button>Logout</button>
+            <button onClick={(e) => lo()}>Logout</button>
             {/* <img
               src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
               alt=""
