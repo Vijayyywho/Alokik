@@ -4,10 +4,10 @@ import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function Navbar() {
-  const { userr, loginWithRedirect } = useAuth0();
+  const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
 
   const [open, setOpen] = useState(false);
-  const user = false;
+  const userr = false;
 
   return (
     <nav>
@@ -22,9 +22,11 @@ function Navbar() {
         <a href="/agents">Agents</a>
       </div>
       <div className="right">
-        {user ? (
+        {/* <h1>hello{user.name}</h1> */}
+        {isAuthenticated ? (
           <div className="user">
-            <img
+            <button>Logout</button>
+            {/* <img
               src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg"
               alt=""
             />
@@ -32,7 +34,7 @@ function Navbar() {
             <Link className="profile" to="/profile">
               <div className="notify">5</div>
               <span>Profile</span>
-            </Link>
+            </Link> */}
           </div>
         ) : (
           <>
