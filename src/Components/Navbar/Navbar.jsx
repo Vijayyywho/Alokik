@@ -127,7 +127,7 @@ function Navbar() {
           okButtonProps={{
             style: { backgroundColor: "red", borderColor: "red" },
           }}
-          style={{ top: "50%", transform: "translateY(-50%)" }} // Center the modal vertically
+          style={{ top: 30 }} // Center the modal vertically
           bodyStyle={{ paddingBottom: "20px" }} // Add extra padding to the modal body
           maskStyle={{ background: "rgba(0, 0, 0, 0.6)" }} // Semi-transparent background mask
         >
