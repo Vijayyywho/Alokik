@@ -23,7 +23,7 @@ const Newlist = () => {
         display="grid"
         gridTemplateColumns="repeat(auto-fit, minmax(300px, 2fr))"
         gap={6}
-        mt={5}
+        mt={10}
       >
         {listData.slice(0, visibleItems).map((item) => {
           // Generate a random rating for each item
