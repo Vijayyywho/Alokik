@@ -12,6 +12,10 @@
   background-repeat: no-repeat;
   background-position: center;
 
+  @include sm {
+    padding: 5px 25px;
+  }
+
   .map {
     border-radius: 0; // Remove border-radius
     // Add other styles as needed
@@ -98,7 +102,7 @@
         }
 
         @include sm {
-          font-size: 35px;
+          font-size: 30px;
           text-align: center;
         }
 

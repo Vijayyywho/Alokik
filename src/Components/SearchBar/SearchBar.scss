@@ -19,11 +19,17 @@
 
         @include sm {
           border-bottom: 1px solid #999;
+          padding: 10px 36px;
         }
       }
       &:last-child {
         border-top-right-radius: 5px;
         border-left: none;
+
+        @include sm {
+          border-bottom: 1px solid #999;
+          padding: 10px 36px;
+        }
       }
     }
   }
@@ -54,7 +60,7 @@
 
       padding: 0 10px;
       @include sm {
-        padding: 13px;
+        padding: 10px;
         border: 1px solid #999;
       }
     }
