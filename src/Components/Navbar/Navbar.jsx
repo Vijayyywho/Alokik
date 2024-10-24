@@ -123,11 +123,8 @@ function Navbar() {
           onCancel={handleCancel} // Cancel the logout
           okText="Logout"
           cancelText="Cancel"
-          style={{
-            top: 20,
-          }}
           okButtonProps={{
-            style: { backgroundColor: "red", borderColor: "red" },
+            style: { backgroundColor: "red", borderColor: "red", top: 40 },
           }} // Make Logout button red
           style={{ top: "auto", bottom: 0 }} // Position the modal at the bottom
           bodyStyle={{ paddingBottom: "20px" }} // Add extra padding to the modal body
