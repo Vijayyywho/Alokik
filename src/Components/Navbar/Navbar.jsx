@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button, Avatar } from "antd";
+import { Button, Avatar, Modal } from "antd";
 import {
   LoginOutlined,
   UserAddOutlined,
@@ -11,8 +11,24 @@ import {
 
 function Navbar() {
   const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
-
   const [open, setOpen] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false); // State to control the modal
+
+  // Function to show the logout confirmation modal
+  const showLogoutModal = () => {
+    setIsModalVisible(true);
+  };
+
+  // Function to handle logout when confirmed
+  const handleLogout = () => {
+    logout({ returnTo: window.location.origin });
+    setIsModalVisible(false);
+  };
+
+  // Function to cancel the logout action
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   return (
     <nav>
@@ -35,9 +51,9 @@ function Navbar() {
           >
             {/* Display user's profile picture or a default icon */}
             <Avatar
-              src={user.picture} // Use the user's profile picture from Auth0
+              src={user.picture}
               size={44}
-              icon={!user.picture && <UserOutlined />} // If no profile picture, show default icon
+              icon={!user.picture && <UserOutlined />}
               style={{ marginRight: "10px" }}
             />
             <span>Hello, {user.name}</span>
@@ -45,7 +61,7 @@ function Navbar() {
               type="primary"
               size="large"
               style={{ marginLeft: "10px" }}
-              onClick={() => logout({ returnTo: window.location.origin })}
+              onClick={showLogoutModal} // Show the confirmation modal on click
             >
               Logout
             </Button>
@@ -65,7 +81,7 @@ function Navbar() {
               type="default"
               size="large"
               icon={<UserAddOutlined />}
-              onClick={() => alert("Sign Up Clicked")} // Replace with actual sign-up functionality
+              onClick={() => alert("Sign Up Clicked")}
             >
               Sign Up
             </Button>
@@ -90,6 +106,18 @@ function Navbar() {
             </>
           )}
         </div>
+
+        {/* Logout Confirmation Modal */}
+        <Modal
+          title="Confirm Logout"
+          visible={isModalVisible}
+          onOk={handleLogout} // Confirm logout
+          onCancel={handleCancel} // Cancel the logout
+          okText="Logout"
+          cancelText="Cancel"
+        >
+          <p>Are you sure you want to log out?</p>
+        </Modal>
       </div>
     </nav>
   );
