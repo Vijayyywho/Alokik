@@ -117,6 +117,7 @@ function Navbar() {
 
         {/* Logout Confirmation Modal */}
         <Modal
+          centered
           title="Confirm Logout"
           visible={isModalVisible}
           onOk={handleLogout} // Confirm logout
@@ -124,9 +125,9 @@ function Navbar() {
           okText="Logout"
           cancelText="Cancel"
           okButtonProps={{
-            style: { backgroundColor: "red", borderColor: "red", top: 40 },
-          }} // Make Logout button red
-          style={{ top: "auto", bottom: 0 }} // Position the modal at the bottom
+            style: { backgroundColor: "red", borderColor: "red" },
+          }}
+          style={{ top: "50%", transform: "translateY(-50%)" }} // Center the modal vertically
           bodyStyle={{ paddingBottom: "20px" }} // Add extra padding to the modal body
           maskStyle={{ background: "rgba(0, 0, 0, 0.6)" }} // Semi-transparent background mask
         >
