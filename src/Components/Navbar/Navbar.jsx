@@ -123,6 +123,9 @@ function Navbar() {
           onCancel={handleCancel} // Cancel the logout
           okText="Logout"
           cancelText="Cancel"
+          style={{
+            top: 20,
+          }}
           okButtonProps={{
             style: { backgroundColor: "red", borderColor: "red" },
           }} // Make Logout button red
