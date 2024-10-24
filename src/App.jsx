@@ -6,6 +6,7 @@ import ListPage from "./routes/ListPage/ListPage";
 import Layout from "./routes/layout/Layout";
 import SinglePage from "./routes/Single/SinglePage";
 import Profile from "./Components/Profile/Profile";
+import "./index.css";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 function App() {

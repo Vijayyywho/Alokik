@@ -98,7 +98,8 @@
         }
 
         @include sm {
-          font-size: 30px;
+          font-size: 35px;
+          text-align: center;
         }
 
         span {
@@ -106,6 +107,11 @@
         }
       }
 
+      p {
+        @include sm {
+          text-align: center;
+        }
+      }
       .boxes {
         display: flex;
         justify-content: flex-start;
@@ -171,6 +177,11 @@
       font-weight: 700;
       width: fit-content;
       margin-bottom: 20px;
+
+      @include sm {
+        font-size: 30px;
+        margin-top: 30px;
+      }
 
       p {
         font-size: 14px;
