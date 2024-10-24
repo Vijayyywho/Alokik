@@ -64,10 +64,17 @@ nav {
     justify-content: flex-end;
     height: 100%;
 
+    .btns {
+      @include sm {
+        display: none;
+      }
+    }
+
     .user {
       display: flex;
       align-items: center;
       font-weight: bold;
+
       img {
         width: 40px;
         height: 40px;
