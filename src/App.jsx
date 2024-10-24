@@ -7,7 +7,7 @@ import ListPage from "./routes/ListPage/ListPage";
 import Layout from "./routes/layout/Layout";
 import SinglePage from "./routes/Single/SinglePage";
 import Profile from "./Components/Profile/Profile";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { HashRouter, Route, Routes } from "react-router-dom"; // Use HashRouter
 
 function App() {
   const { loginWithRedirect, isAuthenticated, user } = useAuth0();
@@ -19,32 +19,20 @@ function App() {
     }
   }, [isAuthenticated, user]);
 
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <Layout />,
-      children: [
-        {
-          path: "/",
-          element: <HomePage />,
-        },
-        {
-          path: "/list",
-          element: <ListPage />,
-        },
-        {
-          path: "/:id",
-          element: <SinglePage />,
-        },
-        {
-          path: "/profile",
-          element: <Profile />,
-        },
-      ],
-    },
-  ]);
-
-  return <RouterProvider router={router} />;
+  return (
+    <HashRouter>
+      {" "}
+      {/* Use HashRouter to ensure compatibility with static hosting */}
+      <Layout>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/list" element={<ListPage />} />
+          <Route path="/:id" element={<SinglePage />} />
+          <Route path="/profile" element={<Profile />} />
+        </Routes>
+      </Layout>
+    </HashRouter>
+  );
 }
 
 export default App;
