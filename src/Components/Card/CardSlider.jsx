@@ -1,31 +1,88 @@
-import React, { useState } from "react";
-import { Box, Image, Text, Badge, Button, HStack } from "@chakra-ui/react"; // Import HStack for layout
-import { listData } from "../../Lib/dummydata";
+import React from "react";
+import Slider from "react-slick"; // Import Slider from react-slick
+import { Box, Image, Text, Badge, HStack } from "@chakra-ui/react"; // Import components from Chakra UI
+import { listData } from "../../Lib/dummydata"; // Your dummy data
 import { Link } from "react-router-dom";
-import { StarIcon } from "@chakra-ui/icons"; // Import StarIcon for stars
-import "./List.scss";
+import { StarIcon } from "@chakra-ui/icons"; // Star icon
+import "slick-carousel/slick/slick.css"; // Import slick CSS
+import "slick-carousel/slick/slick-theme.css"; // Import slick theme CSS
+import "./CardSlider.scss";
 
 const Newlist = () => {
-  const [visibleItems, setVisibleItems] = useState(4); // Initially show 6 items
-
-  const handleViewMore = () => {
-    setVisibleItems((prevVisibleItems) => prevVisibleItems + 3); // Show 3 more items
-  };
-
   // Function to generate a random rating between 1 and 5
   const generateRandomRating = () => {
     return Math.floor(Math.random() * 5) + 1; // Returns a random integer from 1 to 5
   };
 
-  return (
-    <>
-      <Box
-        display="grid"
-        gridTemplateColumns="repeat(auto-fit, minmax(300px, 2fr))"
-        gap={6}
+  // Custom Next Arrow Component
+  const SampleNextArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div
+        className="slick-arrow slick-next"
+        style={{ display: "block", zIndex: 1 }}
+        onClick={onClick}
       >
-        {listData.slice(0, visibleItems).map((item) => {
-          // Generate a random rating for each item
+        <span className="arrow">→</span>
+      </div>
+    );
+  };
+
+  // Custom Previous Arrow Component
+  const SamplePrevArrow = (props) => {
+    const { onClick } = props;
+    return (
+      <div
+        className="slick-arrow slick-prev"
+        style={{ display: "block", zIndex: 1 }}
+        onClick={onClick}
+      >
+        <span className="arrow">←</span>
+      </div>
+    );
+  };
+
+  // Slick settings
+  const settings = {
+    dots: false,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 4, // Show 4 cards at once
+    slidesToScroll: 1,
+    nextArrow: <SampleNextArrow />, // Custom next arrow
+    prevArrow: <SamplePrevArrow />, // Custom previous arrow
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3, // Adjust for medium screens
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2, // Adjust for small screens
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1, // Adjust for extra small screens
+        },
+      },
+    ],
+  };
+
+  return (
+    <div className="py-5">
+      <h2 className="custom-padding  text-4xl font-bold mb-5 py-0 pb-5">
+        Popular Resorts In <span className="spa">Mumbai</span>
+      </h2>
+
+      <Slider {...settings} style={{ padding: "0 15px" }}>
+        {" "}
+        {/* Add padding here */}
+        {listData.map((item) => {
           const randomRating = generateRandomRating();
 
           return (
@@ -35,6 +92,7 @@ const Newlist = () => {
               borderRadius="lg"
               overflow="hidden"
               p={5}
+              mx={2} // Optional horizontal margin for additional spacing
               transition="box-shadow 0.2s ease-in-out" // Smooth transition
               _hover={{ boxShadow: "lg" }} // Slight shadow on hover
             >
@@ -82,7 +140,6 @@ const Newlist = () => {
 
                 {/* Random Star Rating */}
                 <HStack mt="2">
-                  {/* Generate filled stars and empty stars based on random rating */}
                   {[...Array(5)].map((_, index) => (
                     <StarIcon
                       key={index}
@@ -94,23 +151,8 @@ const Newlist = () => {
             </Box>
           );
         })}
-      </Box>
-
-      {/* View More Button */}
-      {visibleItems < listData.length && (
-        <Box textAlign="center" mt={6}>
-          <Button
-            fontSize="15px"
-            fontWeight="400"
-            className="btn"
-            colorScheme="teal"
-            onClick={handleViewMore}
-          >
-            View More
-          </Button>
-        </Box>
-      )}
-    </>
+      </Slider>
+    </div>
   );
 };
 

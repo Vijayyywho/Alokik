@@ -15,6 +15,7 @@ import TourGrid from "../Components/Card/Banner";
 import Travel1 from "../Components/SearchBar/Search2";
 import SearchSection from "../Components/SearchBar/Search2";
 import Home2 from "../Components/Home/Home2";
+import CardSlider from "../Components/Card/CardSlider";
 
 const HomePage = () => {
   const data = listData;
@@ -48,6 +49,8 @@ const HomePage = () => {
       }
     }
   };
+
+  console.log(toggleMap);
 
   // Function to handle scroll event
   // Function to handle scroll event
@@ -131,6 +134,7 @@ const HomePage = () => {
         <NewHomee />
         <ClientLogo8 />
         <TourGrid />
+        <CardSlider />
 
         {/* Button to open the map in full screen */}
         {showButton && (

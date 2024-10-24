@@ -1,0 +1,41 @@
+@import "../../responsive.scss";
+.slick-arrow {
+  /* Background color for arrows */
+  border-radius: 50%; /* Rounded buttons */
+  height: 30px; /* Height */
+  width: 30px; /* Width */
+
+  display: flex; /* Flex display for centering */
+  align-items: center; /* Center vertically */
+  justify-content: center; /* Center horizontally */
+  cursor: pointer; /* Cursor change on hover */
+  z-index: 1; /* Stack above other content */
+}
+
+.slick-prev {
+  left: -40px; /* Positioning of the previous arrow */
+}
+.slick-prev:before {
+  font-size: 40px;
+  color: #ff385c;
+}
+
+.slick-next:before {
+  font-size: 40px;
+  color: #ff385c;
+}
+.slick-slide {
+  padding: 0px 10px;
+  /* Add margin to the sides of each slide */
+}
+.spa {
+  color: #ff385c;
+}
+.custom-padding {
+  padding-left: 25px;
+  text-align: start;
+  @include sm {
+    text-align: center;
+  }
+}
+/* In your CSS file */
