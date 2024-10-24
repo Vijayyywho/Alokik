@@ -1,7 +1,8 @@
-/** @type {import('tailwindcss').Config} */
+// tailwind.config.js
 module.exports = {
+  mode: "jit",
   content: [
-    "./src/**/*.{js,jsx,ts,tsx}", // Add this to target all your React files
+    "./src/**/*.{js,jsx,ts,tsx}", // Include your paths here
   ],
   theme: {
     extend: {},
