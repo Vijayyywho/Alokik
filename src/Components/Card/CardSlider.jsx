@@ -79,7 +79,7 @@ const Newlist = () => {
         Popular Resorts In <span className="spa">Mumbai</span>
       </h2>
 
-      <Slider {...settings} style={{ padding: "0 15px" }}>
+      <Slider {...settings} style={{ padding: "0" }}>
         {" "}
         {/* Add padding here */}
         {listData.map((item) => {
