@@ -7,6 +7,7 @@ import ListPage from "./routes/ListPage/ListPage";
 import Layout from "./routes/layout/Layout";
 import SinglePage from "./routes/Single/SinglePage";
 import Profile from "./Components/Profile/Profile";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { HashRouter, Route, Routes } from "react-router-dom"; // Use HashRouter
 
 function App() {
@@ -18,6 +19,31 @@ function App() {
       message.success(`Welcome back, ${user.name}!`, 5); // Display success message for 5 seconds
     }
   }, [isAuthenticated, user]);
+
+  // const router = createBrowserRouter([
+  //   {
+  //     path: "/",
+  //     element: <Layout />,
+  //     children: [
+  //       {
+  //         path: "/",
+  //         element: <HomePage />,
+  //       },
+  //       {
+  //         path: "/list",
+  //         element: <ListPage />,
+  //       },
+  //       {
+  //         path: "/:id",
+  //         element: <SinglePage />,
+  //       },
+  //       {
+  //         path: "/profile",
+  //         element: <Profile />,
+  //       },
+  //     ],
+  //   },
+  // ]);
 
   return (
     <HashRouter>
