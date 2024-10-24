@@ -2,17 +2,19 @@ import { useState } from "react";
 import "./Navbar.scss";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Button, Avatar, Modal } from "antd";
+import { Button, Avatar, Modal, Spin } from "antd";
 import {
   LoginOutlined,
   UserAddOutlined,
   UserOutlined,
+  LoadingOutlined,
 } from "@ant-design/icons";
 
 function Navbar() {
   const { user, loginWithRedirect, isAuthenticated, logout } = useAuth0();
   const [open, setOpen] = useState(false);
   const [isModalVisible, setIsModalVisible] = useState(false); // State to control the modal
+  const [loading, setLoading] = useState(false); // State to control spinner visibility
 
   // Function to show the logout confirmation modal
   const showLogoutModal = () => {
@@ -21,14 +23,20 @@ function Navbar() {
 
   // Function to handle logout when confirmed
   const handleLogout = () => {
-    logout({ returnTo: window.location.origin });
-    setIsModalVisible(false);
+    setLoading(true); // Show the spinner
+    // Simulate logout action with a delay (to showcase the spinner)
+    setTimeout(() => {
+      logout({ returnTo: window.location.origin });
+    }, 2000); // Delay added just for demo purposes
   };
 
   // Function to cancel the logout action
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
+  // Custom loading spinner icon
+  const antIcon = <LoadingOutlined style={{ fontSize: 24 }} spin />;
 
   return (
     <nav>
@@ -115,8 +123,22 @@ function Navbar() {
           onCancel={handleCancel} // Cancel the logout
           okText="Logout"
           cancelText="Cancel"
+          okButtonProps={{
+            style: { backgroundColor: "red", borderColor: "red" },
+          }} // Make Logout button red
+          style={{ top: "auto", bottom: 0 }} // Position the modal at the bottom
+          bodyStyle={{ paddingBottom: "20px" }} // Add extra padding to the modal body
+          maskStyle={{ background: "rgba(0, 0, 0, 0.6)" }} // Semi-transparent background mask
         >
-          <p>Are you sure you want to log out?</p>
+          {/* Show spinner if loading is true, else show the confirmation text */}
+          {loading ? (
+            <div style={{ textAlign: "center" }}>
+              <Spin indicator={antIcon} /> {/* Spinner Icon */}
+              <p>Logging out...</p>
+            </div>
+          ) : (
+            <p>Are you sure you want to log out?</p>
+          )}
         </Modal>
       </div>
     </nav>
