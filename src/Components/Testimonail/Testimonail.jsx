@@ -40,13 +40,12 @@ const ClientLogo8 = () => {
         {/* Text Section */}
         <div className="grid grid-cols-14 justify-center mb-16">
           <div className="col-span-12 lg:col-span-6 lg:col-start-4 text-center">
-            <h2 className="font-bold text-[25px] lg:text-[45px] leading-none mb-6">
+            <h2 className="font-bold text-[30px] sm:text-[30px] lg:text-[45px]  leading-none mb-6">
               Meet Our <span className="text-[#ff385c]">Clients</span> &
               Partners
             </h2>
-            <p className="text-lg leading-6 opacity-70">
+            <p className=" sm:text-sm text-md leading-6 opacity-70">
               Create amazing carousel to display your client or partner logos
-              with extensive design controls.
             </p>
           </div>
         </div>

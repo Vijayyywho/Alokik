@@ -69,3 +69,21 @@
     }
   }
 }
+
+.homee {
+  @include sm {
+    height: 45vh;
+  }
+  .main {
+    @include sm {
+      h1 {
+        font-size: 30px;
+        padding: 3px;
+      }
+      p {
+        font-size: 18px;
+        font-weight: 300;
+      }
+    }
+  }
+}

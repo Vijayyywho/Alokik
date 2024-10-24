@@ -75,7 +75,7 @@ const Newlist = () => {
 
   return (
     <div className="py-5">
-      <h2 className="custom-padding  text-4xl font-bold mb-5 py-0 pb-5">
+      <h2 className="custom-padding  text-3xl font-bold mb-5 py-0 pb-5">
         Popular Resorts In <span className="spa">Mumbai</span>
       </h2>
 

@@ -1,4 +1,5 @@
 import React from "react";
+import "./Banner.scss";
 
 const tours = [
   {
@@ -41,12 +42,12 @@ const tours = [
 const TourGrid = () => {
   return (
     <section className="py-16 bg-white">
-      <div className="container mx-auto  sm:px-6 lg:px-8">
-        <h2 className="text-5xl font-bold mb-8 text-center">
+      <div className="container mx-auto  sm:px-6 lg:px-8 customlass">
+        <h2 className="text-5xl   font-bold mb-8 text-center  ">
           Experience the <span className="text-[#ff385c]"> Best </span>
           of Our Resorts!
         </h2>
-        <p className="text-center mb-12 text-[#747272]">
+        <p className="text-center text-md mb-12 text-[#747272]">
           From serene beachfront escapes and luxurious mountain retreats to
           family-friendly resorts.
         </p>
