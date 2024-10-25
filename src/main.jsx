@@ -11,7 +11,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       domain="dev-bv30erk0r2ludz7f.us.auth0.com"
       clientId="YGRa8fGfOIR8s1qdbu8qLc4DMr7tMofM"
       authorizationParams={{
-        redirect_uri: window.location.origin,
+        redirect_uri: "https://alokik.netlify.app/",
       }}
     >
       <ChakraProvider>
