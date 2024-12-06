@@ -1,20 +1,18 @@
 import React from "react";
-import Slider from "react-slick"; // Import Slider from react-slick
-import { Box, Image, Text, Badge, HStack } from "@chakra-ui/react"; // Import components from Chakra UI
-import { listData } from "../../Lib/dummydata"; // Your dummy data
+import Slider from "react-slick";
+import { Box, Image, Text, Badge, HStack } from "@chakra-ui/react";
+import { listData } from "../../Lib/dummydata";
 import { Link } from "react-router-dom";
-import { StarIcon } from "@chakra-ui/icons"; // Star icon
-import "slick-carousel/slick/slick.css"; // Import slick CSS
-import "slick-carousel/slick/slick-theme.css"; // Import slick theme CSS
+import { StarIcon } from "@chakra-ui/icons";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import "./CardSlider.scss";
 
 const Newlist = () => {
-  // Function to generate a random rating between 1 and 5
   const generateRandomRating = () => {
-    return Math.floor(Math.random() * 5) + 1; // Returns a random integer from 1 to 5
+    return Math.floor(Math.random() * 5) + 1;
   };
 
-  // Custom Next Arrow Component
   const SampleNextArrow = (props) => {
     const { onClick } = props;
     return (
@@ -28,7 +26,6 @@ const Newlist = () => {
     );
   };
 
-  // Custom Previous Arrow Component
   const SamplePrevArrow = (props) => {
     const { onClick } = props;
     return (
@@ -42,32 +39,31 @@ const Newlist = () => {
     );
   };
 
-  // Slick settings
   const settings = {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 4, // Show 4 cards at once
+    slidesToShow: 4,
     slidesToScroll: 1,
-    nextArrow: <SampleNextArrow />, // Custom next arrow
-    prevArrow: <SamplePrevArrow />, // Custom previous arrow
+    nextArrow: <SampleNextArrow />,
+    prevArrow: <SamplePrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3, // Adjust for medium screens
+          slidesToShow: 3,
         },
       },
       {
         breakpoint: 768,
         settings: {
-          slidesToShow: 2, // Adjust for small screens
+          slidesToShow: 2,
         },
       },
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1, // Adjust for extra small screens
+          slidesToShow: 1,
         },
       },
     ],
@@ -81,7 +77,6 @@ const Newlist = () => {
 
       <Slider {...settings} style={{ padding: "0" }}>
         {" "}
-        {/* Add padding here */}
         {listData.map((item) => {
           const randomRating = generateRandomRating();
 
@@ -92,9 +87,9 @@ const Newlist = () => {
               borderRadius="lg"
               overflow="hidden"
               p={5}
-              mx={2} // Optional horizontal margin for additional spacing
-              transition="box-shadow 0.2s ease-in-out" // Smooth transition
-              _hover={{ boxShadow: "lg" }} // Slight shadow on hover
+              mx={2}
+              transition="box-shadow 0.2s ease-in-out"
+              _hover={{ boxShadow: "lg" }}
             >
               <Link to={`/${item.id}`}>
                 <Image
@@ -123,13 +118,13 @@ const Newlist = () => {
                     fontWeight="normal"
                     as="h4"
                     lineHeight="tight"
-                    fontSize="19px" // Updated title font size
+                    fontSize="19px"
                   >
                     {item.title}
                   </Box>
                 </Link>
                 <Box color="#000" fontWeight="700" fontSize="20px">
-                  ₹{item.price}/night {/* Updated price font size */}
+                  ₹{item.price}/night
                 </Box>
 
                 <Box mt="2">
@@ -138,12 +133,11 @@ const Newlist = () => {
                   </Text>
                 </Box>
 
-                {/* Random Star Rating */}
                 <HStack mt="2">
                   {[...Array(5)].map((_, index) => (
                     <StarIcon
                       key={index}
-                      color={index < randomRating ? "teal.500" : "gray.300"} // Filled star or empty star
+                      color={index < randomRating ? "teal.500" : "gray.300"}
                     />
                   ))}
                 </HStack>

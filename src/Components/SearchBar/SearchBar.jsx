@@ -1,18 +1,23 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import "./SearchBar.scss";
-const types = ["resorts", "hotels"];
+
+const types = ["buy", "rent"];
 
 const SearchBar = () => {
-  const [querry, setQuerry] = useState({
-    type: types[0], // Initialize with the first type (e.g., "resorts")
-    location: "",
+  const [query, setquery] = useState({
+    type: types[0],
+    city: "",
     minPrice: "",
     maxPrice: "",
   });
 
   const switchType = (val) => {
-    setQuerry((prev) => ({ ...prev, type: val }));
+    setquery((prev) => ({ ...prev, type: val }));
+  };
+
+  const handleChange = (e) => {
+    setquery((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
   return (
@@ -21,8 +26,8 @@ const SearchBar = () => {
         {types.map((type) => (
           <button
             key={type}
-            onClick={() => switchType(type)} // Pass the correct type value
-            className={querry.type === type ? "active" : ""}
+            onClick={() => switchType(type)}
+            className={query.type === type ? "active" : ""}
           >
             {type}
           </button>
@@ -30,25 +35,21 @@ const SearchBar = () => {
       </div>
       <form>
         <input
+          onChange={handleChange}
           type="text"
-          name="location"
-          placeholder="City Location "
-          value={querry.location} // Bind the input to the state
-          onChange={(e) =>
-            setQuerry((prev) => ({ ...prev, location: e.target.value }))
-          } // Handle location change
+          name="city" // Ensure this matches the key in the state
+          placeholder="City"
+          value={query.city} // Bind the input to the 'city' key
         />
-        <img className="location " src="./loc.png" alt="" />
+        <img className="location" src="./loc.png" alt="" />
         <input
           type="number"
           min={0}
           max={10000000}
           placeholder="₹ Min Price"
           name="minPrice"
-          value={querry.minPrice} // Bind the input to the state
-          onChange={(e) =>
-            setQuerry((prev) => ({ ...prev, minPrice: Number(e.target.value) }))
-          } // Handle min price change
+          value={query.minPrice}
+          onChange={handleChange}
         />
         <input
           type="number"
@@ -56,16 +57,17 @@ const SearchBar = () => {
           min={0}
           max={10000000}
           placeholder="₹ Max Price"
-          value={querry.maxPrice} // Bind the input to the state
-          onChange={(e) =>
-            setQuerry((prev) => ({ ...prev, maxPrice: Number(e.target.value) }))
-          } // Handle max price change
+          value={query.maxPrice}
+          onChange={handleChange}
         />
-        <button type="submit">
-          {" "}
-          {/* Add type="submit" to the button */}
-          <img src="/search.png" alt="" />
-        </button>
+
+        <Link
+          to={`/list?type=${query.type}&city=${query.city}&minPrice=${query.minPrice}&maxPrice=${query.maxPrice}`}
+        >
+          <button type="submit">
+            <img src="/search.png" alt="" />
+          </button>
+        </Link>
       </form>
     </div>
   );

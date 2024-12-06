@@ -3,56 +3,94 @@
 .filter {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1rem;
+  padding: 1rem;
 
+  // Adjust width for larger screens
   @include md {
     width: 70%;
+    margin: 0 auto;
   }
+
   h1 {
     font-weight: 300;
-    font-size: 25px;
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 1rem;
+
+    span {
+      color: #ef964c;
+      font-weight: 500;
+    }
+
+    @include sm {
+      font-size: 1.5rem;
+    }
   }
 
   .item {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 0.25rem;
 
     label {
-      font-size: 10px;
+      font-size: 0.875rem;
+      color: #333;
     }
+
     input,
     select {
-      width: 100px;
-      padding: 10px;
+      width: 100%;
+      max-width: 250px;
+      padding: 0.625rem;
       border: 1px solid #e0e0e0;
-      border-radius: 5px;
-      font-size: 14px;
+      border-radius: 0.375rem;
+      font-size: 0.875rem;
+      transition: border-color 0.3s;
 
-      @include md {
+      &:focus {
+        border-color: #a6cbf8;
+        outline: none;
       }
     }
   }
 
   .top {
+    display: flex;
+
     input {
-      width: 80%;
+      width: 100%;
+      max-width: 500px;
     }
   }
+
   .bottom {
     display: flex;
-    justify-content: space-between;
-    gap: 20px;
-    @include md {
-      flex: 0 1 100%;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+
+    @include sm {
+      justify-content: space-between;
+    }
+
+    .item {
+      flex: 1 1 150px;
     }
 
     button {
-      background-color: #fff;
+      background-color: #ef964c;
+      color: white;
       border: none;
-      border-radius: 5px;
-      padding: 0px 25px 0px 25px;
+      border-radius: 0.375rem;
+      padding: 0.625rem 1.5rem;
+      font-size: 1rem;
       cursor: pointer;
+      transition: background-color 0.3s;
+
+      &:hover {
+        background-color: #ef954caa;
+      }
     }
   }
 }

@@ -3,7 +3,7 @@
 .slider {
   display: flex;
   width: 100%;
-  height: 315px;
+  height: 400px;
   gap: 20px;
 
   .fullSlider {
@@ -84,11 +84,12 @@
 
 .smallImage {
   flex: 1;
+  justify-content: space-between;
   display: flex;
   flex-direction: column;
   gap: 10px;
 
   img {
-    height: 100px;
+    height: 120px;
   }
 }

@@ -9,3 +9,7 @@
 .review-card:hover {
   transform: scale(1.05);
 }
+/* In your HomePage.scss or global stylesheet */
+html {
+  scroll-behavior: smooth;
+}

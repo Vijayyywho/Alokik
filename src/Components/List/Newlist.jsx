@@ -1,21 +1,43 @@
 import React, { useState } from "react";
-import { Box, Image, Text, Badge, Button, HStack } from "@chakra-ui/react"; // Import HStack for layout
-import { listData } from "../../Lib/dummydata";
+import { Box, Image, Text, Badge, Button, HStack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import { StarIcon } from "@chakra-ui/icons"; // Import StarIcon for stars
+import { StarIcon } from "@chakra-ui/icons";
 import "./List.scss";
 
-const Newlist = () => {
-  const [visibleItems, setVisibleItems] = useState(4); // Initially show 6 items
+const Newlist = ({ items = [], itemsPerPage = 8 }) => {
+  const [currentPage, setCurrentPage] = useState(1); // Initial page is 1
 
-  const handleViewMore = () => {
-    setVisibleItems((prevVisibleItems) => prevVisibleItems + 3); // Show 3 more items
+  const totalPages = Math.ceil(items.length / itemsPerPage); // Calculate total pages
+
+  // Function to go to the next page
+  const nextPage = () => {
+    if (currentPage < totalPages) {
+      setCurrentPage(currentPage + 1);
+    }
   };
+
+  // Function to go to the previous page
+  const prevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+    }
+  };
+
+  // Calculate which items to show on the current page
+  const currentItems = items.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
 
   // Function to generate a random rating between 1 and 5
   const generateRandomRating = () => {
     return Math.floor(Math.random() * 5) + 1; // Returns a random integer from 1 to 5
   };
+
+  // Check if items are available
+  if (!items.length) {
+    return <p>No items available</p>;
+  }
 
   return (
     <>
@@ -25,8 +47,7 @@ const Newlist = () => {
         gap={6}
         mt={10}
       >
-        {listData.slice(0, visibleItems).map((item) => {
-          // Generate a random rating for each item
+        {currentItems.map((item) => {
           const randomRating = generateRandomRating();
 
           return (
@@ -36,12 +57,12 @@ const Newlist = () => {
               borderRadius="lg"
               overflow="hidden"
               p={5}
-              transition="box-shadow 0.2s ease-in-out" // Smooth transition
-              _hover={{ boxShadow: "lg" }} // Slight shadow on hover
+              transition="box-shadow 0.2s ease-in-out"
+              _hover={{ boxShadow: "lg" }}
             >
-              <Link to={`/${item.id}`}>
+              <Link to={`/list/${item.id}`}>
                 <Image
-                  src={item.img}
+                  src={item.images[0]}
                   alt={item.title}
                   width="100%"
                   height="200px"
@@ -58,7 +79,7 @@ const Newlist = () => {
                     {item.bathroom} Baths
                   </Badge>
                 </Box>
-                <Link to={`${item.id}`}>
+                <Link to={`/list/${item.id}`}>
                   <Box
                     mt="5"
                     mb="2"
@@ -66,28 +87,24 @@ const Newlist = () => {
                     fontWeight="normal"
                     as="h4"
                     lineHeight="tight"
-                    fontSize="19px" // Updated title font size
+                    fontSize="19px"
                   >
                     {item.title}
                   </Box>
                 </Link>
                 <Box color="#000" fontWeight="700" fontSize="20px">
-                  ₹{item.price}/night {/* Updated price font size */}
+                  ₹{item.price}/night
                 </Box>
-
                 <Box mt="2">
                   <Text fontSize="18px" color="#505050">
                     {item.address}
                   </Text>
                 </Box>
-
-                {/* Random Star Rating */}
                 <HStack mt="2">
-                  {/* Generate filled stars and empty stars based on random rating */}
                   {[...Array(5)].map((_, index) => (
                     <StarIcon
                       key={index}
-                      color={index < randomRating ? "teal.500" : "gray.300"} // Filled star or empty star
+                      color={index < randomRating ? "#ef964c" : "gray.300"}
                     />
                   ))}
                 </HStack>
@@ -97,20 +114,32 @@ const Newlist = () => {
         })}
       </Box>
 
-      {/* View More Button */}
-      {visibleItems < listData.length && (
-        <Box textAlign="center" mt={6}>
-          <Button
-            fontSize="15px"
-            fontWeight="400"
-            className="btn"
-            colorScheme="teal"
-            onClick={handleViewMore}
-          >
-            View More
-          </Button>
-        </Box>
-      )}
+      {/* Pagination Controls */}
+      <Box textAlign="center" mt={6}>
+        <Button
+          fontSize="15px"
+          fontWeight="400"
+          backgroundColor="#ef964c"
+          color="#fff"
+          onClick={prevPage}
+          disabled={currentPage === 1}
+        >
+          Prev
+        </Button>
+        <span style={{ margin: "0 10px" }}>
+          Page {currentPage} of {totalPages}
+        </span>
+        <Button
+          fontSize="15px"
+          fontWeight="400"
+          backgroundColor="#ef964c"
+          color="#fff"
+          onClick={nextPage}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </Button>
+      </Box>
     </>
   );
 };

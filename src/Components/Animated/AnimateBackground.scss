@@ -1,0 +1,23 @@
+.instagram-feed {
+  padding: 2rem;
+  background-color: #f8f9fa;
+
+  .instagram-title {
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+
+  .instagram-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1rem;
+  }
+
+  .instagram-item iframe {
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+}

@@ -4,6 +4,10 @@
   height: 100%;
   box-sizing: border-box;
 
+  .postsContainer {
+    margin-top: 25px;
+  }
+
   .cardContainer {
     display: grid;
     grid-template-columns: repeat(
@@ -45,5 +49,15 @@
     align-items: center;
     width: 100%;
     margin-bottom: 50px;
+  }
+  .mapContainer {
+    height: 400px; /* Adjust height as needed */
+    width: 100%;
+  }
+
+  .mapContainer .map {
+    border-radius: 15px;
+    height: 100%; /* Ensure the map takes full height */
+    width: 100%;
   }
 }

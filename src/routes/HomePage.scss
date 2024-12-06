@@ -3,54 +3,110 @@
 .homepage {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  position: relative;
+  height: 100vh;
   box-sizing: border-box;
-  padding: 30px 25px;
+  padding: 45px 35px;
   border-radius: 15px;
-  background-image: url(../../public/sky-bg.avif);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+
+  .video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+  }
+
+  .mapContainer {
+    height: 400px;
+    width: 100%;
+  }
+
+  .mapContainer .map {
+    height: 100%;
+    width: 100%;
+    border-radius: 15px;
+    margin-top: 25px;
+  }
+
+  .resortCards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  .resortCard {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    text-align: center;
+    transition: box-shadow 0.2s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+    }
+
+    h3 {
+      margin: 8px 0;
+      font-size: 1.2em;
+    }
+
+    p {
+      margin: 4px 0;
+      color: #666;
+    }
+
+    b {
+      display: block;
+      margin: 4px 0;
+      color: #000;
+    }
+  }
 
   @include sm {
     padding: 15px 25px;
   }
 
   .map {
-    border-radius: 0; // Remove border-radius
-    // Add other styles as needed
+    border-radius: 0;
   }
+
   nav {
     margin-top: 20px;
     border-radius: 10px;
-
     margin-left: 25px;
     margin-right: 25px;
     background: transparent;
     border: 1px solid rgba(0, 0, 0, 0.179);
   }
 
-  /* In your CSS for Navbar */
   .navbar {
-    position: relative; /* Ensure it's relative for z-index to work */
-    z-index: 1001; /* Ensure it’s above the map */
-    background-color: rgba(
-      255,
-      255,
-      255,
-      0.9
-    ); /* Slightly transparent background */
-    padding: 10px 20px; /* Add some padding */
+    position: relative;
+    z-index: 1001;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 10px 20px;
   }
 
   .open-map-button {
     padding: 10px 20px;
-    background-color: #ff385c; /* Button color */
+    background-color: #ef964c;
     color: white;
-    position: fixed; /* Make the button sticky */
-    left: 50%; /* Center horizontally */
-    transform: translateX(-50%); /* Adjust for center alignment */
-    bottom: 20px; /* Adjust the vertical position */
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 20px;
     border: none;
     z-index: 9999;
     border-radius: 25px;
@@ -60,20 +116,18 @@
     transition: background-color 0.3s, transform 0.3s;
     margin: 20px 0;
 
-    /* Hover effect */
     &:hover {
       background-color: #ff5a8a;
-      transform: translate(-50%, -2px); /* Adjust hover effect */
+      transform: translate(-50%, -2px);
     }
   }
 
-  // Wrapper for text and image sections
   .content-wrapper {
     display: flex;
     justify-content: space-between;
+    z-index: 1; /* Ensure content is above the video */
   }
 
-  // Text section styles
   .textContainer {
     flex: 3;
 
@@ -81,9 +135,10 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 20px;
-      padding-right: 60px;
+      gap: 25px;
+      padding: 18px;
       height: 100%;
+      padding-right: 45px;
 
       @include md {
         padding: 0;
@@ -94,7 +149,7 @@
       }
 
       .title {
-        font-size: 56px;
+        font-size: 42px;
         font-weight: 800;
 
         @include lg {
@@ -107,7 +162,7 @@
         }
 
         span {
-          color: rgb(255, 255, 255);
+          color: #ef964c;
         }
       }
 
@@ -116,10 +171,12 @@
           text-align: center;
         }
       }
+
       .boxes {
         display: flex;
         justify-content: flex-start;
         gap: 50px;
+
         @include sm {
           display: none;
         }
@@ -138,7 +195,6 @@
     }
   }
 
-  // Image section styles
   .imageContainer {
     flex: 2;
     position: relative;
@@ -150,19 +206,24 @@
     img {
       width: 100%;
       position: absolute;
-      bottom: -5px;
+      bottom: -55px;
+
+      padding: 5px;
+      height: auto;
+      object-fit: cover;
+      border-radius: 50%;
       right: 0;
 
       @include lg {
         width: 100%;
       }
+
       @include sm {
         display: none;
       }
     }
   }
 
-  // Cards section styles
   .cardSection {
     margin-top: 50px;
 
@@ -196,6 +257,7 @@
         padding: 5px;
         border-radius: 5px;
       }
+
       img {
         width: 18px;
         position: absolute;
@@ -203,8 +265,9 @@
         right: 170px;
         bottom: 5px;
       }
+
       span {
-        color: #ff385c;
+        color: #ef964c;
       }
     }
   }

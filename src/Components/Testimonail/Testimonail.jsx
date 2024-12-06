@@ -41,7 +41,7 @@ const ClientLogo8 = () => {
         <div className="grid grid-cols-14 justify-center mb-16">
           <div className="col-span-12 lg:col-span-6 lg:col-start-4 text-center">
             <h2 className="font-bold text-[30px] sm:text-[30px] lg:text-[45px]  leading-none mb-6">
-              Meet Our <span className="text-[#ff385c]">Clients</span> &
+              Meet Our <span className="text-[#ef964c]">Clients</span> &
               Partners
             </h2>
             <p className=" sm:text-sm text-md leading-6 opacity-70">

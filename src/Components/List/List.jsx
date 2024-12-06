@@ -1,16 +1,18 @@
-import React from "react";
-import Card from "../Card/Card";
-import { listData } from "../../Lib/dummydata";
-import "./List.scss";
+import "./list.scss";
+import Card from "../card/Card";
 
-const List = () => {
+function List({ posts }) {
+  if (!posts) {
+    return <div>Loading...</div>; // Show loading state if posts are not available yet
+  }
+
   return (
     <div className="list">
-      {listData.map((item) => (
-        <Card key={item.id} className="cardd" item={item} />
+      {posts.map((item) => (
+        <Card key={item.id} item={item} />
       ))}
     </div>
   );
-};
+}
 
 export default List;

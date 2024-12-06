@@ -1,29 +1,41 @@
-import React from "react";
-import Card from "../../Components/Card/Card";
-import CardGrid from "../../Components/Cardgrid/Cardgrid";
-import Filter from "../../Components/filter/Filter";
-import Newlist from "../../Components/List/Newlist";
-import MyMap from "../../Components/Map/MyMap";
-import { listData } from "../../Lib/dummydata";
-import "./listpage.scss";
+import React, { Suspense, lazy } from "react";
+import "./listPage.scss";
+import Filter from "../../components/filter/Filter";
+import { useLoaderData } from "react-router-dom";
+
+// Lazy load the components
+const MyMap = lazy(() => import("../../Components/Map/MyMap"));
+const Newlist = lazy(() => import("../../Components/List/Newlist"));
 
 function ListPage() {
-  const data = listData;
+  const { postResponse } = useLoaderData();
+  const posts = postResponse || [];
+  console.log(posts, "Fetched Posts");
 
   return (
-    <div className="listpage">
+    <div className="listPage">
       <div className="listContainer">
-        <div className="wrapper">
-          <Filter />
-        </div>
+        {/* Map Section */}
         <div className="mapContainer">
-          <MyMap items={data} />
+          <Suspense fallback={<p>Loading map...</p>}>
+            <MyMap items={posts} />
+          </Suspense>
         </div>
-        {/* {data.map((item) => (
-          <Card key={item.id} item={item} />
-        ))} */}
-        {/* <CardGrid items={data} /> */}
-        <Newlist items={data} />
+        {/* Filter Section */}
+        <div className="wrapper">
+          <Filter posts={posts} />
+        </div>
+
+        {/* Posts List Section */}
+        <div className="postsContainer">
+          <Suspense fallback={<p>Loading posts...</p>}>
+            {posts.length > 0 ? (
+              <Newlist items={posts} />
+            ) : (
+              <p>No posts available</p>
+            )}
+          </Suspense>
+        </div>
       </div>
     </div>
   );

@@ -1,99 +1,79 @@
 import "./HomePage.scss";
-import React, { useRef, useState, useEffect } from "react";
-import SearchBar from "../Components/SearchBar/SearchBar";
-import { listData } from "../Lib/dummydata";
-import CardGrid from "../Components/Cardgrid/Cardgrid"; // Import the updated CardGrid
-import MyMap from "../Components/Map/MyMap"; // Ensure you're importing the correct map component
-import Navbar from "../Components/Navbar/Navbar"; // Import your Navbar component
-import DrawerComponent from "../Components/Card/New";
-import AirbnbCard from "../Components/Card/New";
+import React, { useState, useEffect, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
+import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../Context/AuthContext";
+import AnimatedDiv from "../Components/AnimateDiv";
+import { motion } from "framer-motion"; // Import framer-motion
 import Newlist from "../Components/List/Newlist";
-import NewHomee from "../Components/Home/NewHomee";
-import { Link } from "react-router-dom";
+import SearchBar from "../Components/SearchBar/SearchBar";
+import Footer from "../Components/Footer/Footer";
 import ClientLogo8 from "../Components/Testimonail/Testimonail";
 import TourGrid from "../Components/Card/Banner";
-import Travel1 from "../Components/SearchBar/Search2";
-import SearchSection from "../Components/SearchBar/Search2";
-import Home2 from "../Components/Home/Home2";
 import CardSlider from "../Components/Card/CardSlider";
+import NewHomee from "../Components/Home/NewHomee";
+import { listData } from "../Lib/dummydata";
 
+import TempleDetail from "../Components/Details/Temple";
+import TemplesList from "../Components/Details/Temple";
 const HomePage = () => {
-  const data = listData;
-  const [isMapOpen, setIsMapOpen] = useState(false); // State to manage map visibility
-  const [showButton, setShowButton] = useState(true); // State to manage button visibility
-  const mapRef = useRef(null); // Reference to the map container
-  const btnRef = useRef();
+  const { postResponse } = useLoaderData();
+  const items = postResponse || [];
+  const { currentUser } = useContext(AuthContext);
 
-  const toggleMap = () => {
-    setIsMapOpen((prev) => !prev); // Toggle map visibility
+  const [showButton, setShowButton] = useState(true);
+  const navigate = useNavigate(); // Initialize navigate hook
 
-    // Handle full-screen API
-    if (!isMapOpen) {
-      // Open the map in full-screen mode
-      if (mapRef.current) {
-        const mapElement = mapRef.current;
-        if (mapElement.requestFullscreen) {
-          mapElement.requestFullscreen(); // Request full screen
-        } else if (mapElement.mozRequestFullScreen) {
-          mapElement.mozRequestFullScreen(); // Firefox
-        } else if (mapElement.webkitRequestFullscreen) {
-          mapElement.webkitRequestFullscreen(); // Chrome, Safari, Opera
-        } else if (mapElement.msRequestFullscreen) {
-          mapElement.msRequestFullscreen(); // IE/Edge
-        }
-      }
-    } else {
-      // Close full screen if the map is already open
-      if (document.fullscreenElement) {
-        document.exitFullscreen();
-      }
-    }
-  };
-
-  console.log(toggleMap);
-
-  // Function to handle scroll event
-  // Function to handle scroll event
   const handleScroll = () => {
-    const scrollPosition = window.scrollY; // Current scroll position
-    const documentHeight = document.documentElement.scrollHeight; // Total height of the document
-    const windowHeight = window.innerHeight; // Height of the viewport
+    const scrollPosition = window.scrollY;
+    const documentHeight = document.documentElement.scrollHeight;
+    const windowHeight = window.innerHeight;
 
-    // Calculate the percentage scrolled
     const scrollPercent =
       (scrollPosition / (documentHeight - windowHeight)) * 100;
 
-    // Show button after scrolling past 20% and hide after 80%
     if (scrollPercent > 15 && scrollPercent < 80) {
-      setShowButton(true); // Show the button
+      setShowButton(true);
     } else {
-      setShowButton(false); // Hide the button
+      setShowButton(false);
     }
   };
 
-  // Add the scroll event listener when the component mounts
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
 
-    // Cleanup the event listener when the component unmounts
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
+  // Function to navigate to /map
+  const openMap = () => {
+    navigate("/map"); // Navigate to the /map page
+  };
+
   return (
-    <div className="homepage">
-      <div className="content-wrapper">
-        <div className="textContainer">
+    <div className="homepage relative">
+      {/* Animated Background */}
+
+      <div className="content-wrapper relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5 }}
+          className="textContainer"
+        >
           <div className="wrapper">
-            <h1 className="title">
+            <motion.h1 className="title">
               Explore <span>Luxurious Resorts</span> Near You for the Perfect
               Getaway.
-            </h1>
-            <p>
+            </motion.h1>
+
+            <motion.p>
               Discover top-rated resorts nearby for a relaxing and unforgettable
               escape for your next vacation, closer than you think.
-            </p>
+            </motion.p>
+
             <SearchBar />
 
             <div className="boxes">
@@ -111,56 +91,52 @@ const HomePage = () => {
               </div>
             </div>
           </div>
-        </div>
+        </motion.div>
 
         <div className="imageContainer">
-          <img src="/bag.png" alt="Travel Bag" />
+          <motion.img src="/treww.png" alt="Travel Bag" />
         </div>
-      </div>{" "}
-      {/* Cards Section
-      {/* <Home2 /> */}
-      <div className="cardSection">
-        <h2 className="cardSectionTitle">
-          Top Resorts in <span>Palghar</span>
-          <Link to="/list">
-            <p>
-              Explore More
-              <img src="/arrow-up.png" alt="" />
-            </p>
-          </Link>
-        </h2>
-
-        <Newlist />
-        <NewHomee />
-        <ClientLogo8 />
-        <TourGrid />
-        <CardSlider />
-
-        {/* Button to open the map in full screen */}
-        {showButton && (
-          <button className="open-map-button" onClick={toggleMap}>
-            {isMapOpen ? "Close Map" : "Open Map"}
-          </button>
-        )}
       </div>
-      {/* Include the MyMap component with a ref */}
-      {isMapOpen && (
-        <div
-          ref={mapRef}
-          style={{
-            position: "fixed", // Use fixed positioning to cover the viewport
-            top: 0,
-            borderRadius: "0",
-            left: 0,
-            height: "100vh", // Full height
-            width: "100vw", // Full width
-            zIndex: 1000, // Ensure it's on top
-            backgroundColor: "white", // Optional: Add a background color
-          }}
+
+      <div className="cardSection">
+        <AnimatedDiv>
+          <motion.h2 className="cardSectionTitle">
+            Top Resorts in <span>Palghar</span>
+            <Link to="/list">
+              <p>
+                Explore More
+                <img src="/arrow-up.png" alt="" />
+              </p>
+            </Link>
+          </motion.h2>
+        </AnimatedDiv>
+        <AnimatedDiv>
+          <Newlist items={items.slice(0, 4)} />
+        </AnimatedDiv>
+        <AnimatedDiv>
+          <NewHomee />
+        </AnimatedDiv>
+        <AnimatedDiv>
+          <ClientLogo8 />
+        </AnimatedDiv>
+        <AnimatedDiv>
+          <TourGrid />
+        </AnimatedDiv>
+        <AnimatedDiv>
+          <CardSlider />
+        </AnimatedDiv>
+
+        <Footer />
+      </div>
+
+      {/* Button to open map by navigating to /map */}
+      {showButton && (
+        <button
+          className="fixed bottom-5 left-1/2 transform -translate-x-1/2 p-3 px-5 bg-[#ef964c] text-white rounded-full shadow-lg text-md z-50"
+          onClick={openMap} // Navigate to /map on click
         >
-          <Navbar /> {/* Render Navbar only when map is open */}
-          <MyMap items={data} /> {/* Ensure you're passing the right items */}
-        </div>
+          Open Map
+        </button>
       )}
     </div>
   );
