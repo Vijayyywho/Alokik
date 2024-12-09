@@ -42,7 +42,7 @@ import BeachDetails from "./Components/Details/BeachDetails";
 import WaterParksComponent from "./Components/Details/Waterpark";
 import Night from "./Components/Details/Night";
 import Prewedding from "./Components/Details/Prewedding";
-import Wine from "./Components/Details/Wine";
+import Wine from "./Components/Details/Wines";
 
 import Paragliding from "./Components/Details/Paragliding";
 const AdminLayout = () => {
