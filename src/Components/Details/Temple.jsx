@@ -55,7 +55,7 @@ const TemplesList = () => {
               }}
             >
               <Image
-                src={temple.imgUrl}
+                src={temple.urls[0]}
                 alt={temple.title}
                 boxSize="450px"
                 height="300px"

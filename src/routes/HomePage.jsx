@@ -16,6 +16,7 @@ import { listData } from "../Lib/dummydata";
 
 import TempleDetail from "../Components/Details/Temple";
 import TemplesList from "../Components/Details/Temple";
+import ImageGallery from "../Components/Details/ImgActivity";
 const HomePage = () => {
   const { postResponse } = useLoaderData();
   const items = postResponse || [];
@@ -117,7 +118,14 @@ const HomePage = () => {
           <NewHomee />
         </AnimatedDiv>
         <AnimatedDiv>
-          <ClientLogo8 />
+          <ImageGallery
+            title={
+              <span>
+                Must try Expriences in{" "}
+                <span style={{ color: "#ef964c" }}> Palghar </span>
+              </span>
+            }
+          />
         </AnimatedDiv>
         <AnimatedDiv>
           <TourGrid />

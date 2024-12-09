@@ -91,6 +91,8 @@ const BeachDetail = () => {
       ? [beach.description.slice(0, 600), beach.description.slice(200)]
       : [beach.description]
     : [];
+
+  console.log(beach.longitude, "location");
   return (
     <Box bg="white" p={4}>
       {/* Image Gallery */}
@@ -265,7 +267,13 @@ const BeachDetail = () => {
         >
           <iframe
             title="Beach Map"
-            src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60103.44649316179!2d${beach.longitude}!3d${beach.latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be71d6274d544f3%3A0x89ef26a3aeff1e4f!2s${beach.title}!5e0!3m2!1sen!2sin!4v1733384821984!5m2!1sen!2sin`}
+            src={`https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60103.44649316179!2d${
+              beach.longitude
+            }!3d${
+              beach.latitude
+            }!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be71d6274d544f3%3A0x89ef26a3aeff1e4f!2s${encodeURIComponent(
+              beach.title
+            )}!5e0!3m2!1sen!2sin!4v1733384821984!5m2!1sen!2sin`}
             width="100%"
             height="450"
             style={{ border: 0 }}

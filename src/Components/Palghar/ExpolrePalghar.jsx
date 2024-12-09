@@ -8,8 +8,9 @@ import { FaTimes } from "react-icons/fa";
 import Footer from "../Footer/Footer";
 import ImageGallery from "../Details/ImgActivity";
 import { Box, Text, Heading, Button } from "@chakra-ui/react";
+import { title } from "process";
 
-const ExplorePalghar = () => {
+const ExplorePalghar = ({ title }) => {
   const [isVideoModalOpen, setIsVideoModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState("Popular");
 
@@ -229,16 +230,8 @@ const ExplorePalghar = () => {
           </div>
         </div>
       </section>
-      <h1>
-        Must-Try Experiences in <span>Palghar</span>{" "}
-      </h1>
-      <h3>From Adventure to Relaxation </h3>
-      <ImageGallery />
 
-      <h1>
-        Take A Virtual Tour Of <span>Palghar</span>{" "}
-      </h1>
-      <h3>Explore the scenic beauty and hidden gems of this serene town</h3>
+      <ImageGallery title="Must try expriences in Palghar. " />
 
       <AnimatedDiv>
         <div className="video">

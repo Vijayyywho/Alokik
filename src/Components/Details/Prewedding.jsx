@@ -23,7 +23,20 @@ import diamond from "../../../public/diamond.svg";
 import medal from "../../../public/medal.svg";
 import mock from "../../../public/mock.webp";
 
-const Night = () => {
+import PhotoGallery from "./Photo";
+
+const photos = [
+  "https://honeybookstudios.com/wp-content/uploads/2023/12/The-Swiss-tram-Featured-1300x1280.jpg",
+  "https://honeybookstudios.com/wp-content/uploads/2022/09/honeybook29291-650x650.jpg",
+  "https://image.wedmegood.com/resized/720X/uploads/member/4184778/1680243336__DSC6034.jpg?crop=9,223,2030,1142",
+  "https://honeybookstudios.com/wp-content/uploads/elementor/thumbs/proposal-resize-qum81crr6p3ifsxi5mbq4bozm1d0zrleu128xrkwe8.webp",
+  "https://i.ytimg.com/vi/MxVV1T3f1kg/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLBkeulda8NOB56Cb4EUUIEh80spzw",
+  "https://image.wedmegood.com/resized/720X/uploads/member/4184778/1687830950_2023_01_21_06_30_IMG_2415.jpg",
+  "https://i.ytimg.com/vi/Ga9WFdFb0Pk/hq720.jpg?sqp=-oaymwEhCK4FEIIDSFryq4qpAxMIARUAAAAAGAElAADIQj0AgKJD&rs=AOn4CLDapHpg65we4bllbRPIRAcNHu_RmA",
+  "https://honeybookstudios.com/wp-content/uploads/2023/04/4B5A2173-1300x1300.jpg",
+];
+
+const Prewedding = () => {
   const navigate = useNavigate();
   const handleRedirect = (link) => {
     window.scrollTo(0, 0); // Scroll to top
@@ -37,7 +50,7 @@ const Night = () => {
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4}>
           <Box gridColumn={{ md: "1 / span 2" }}>
             <Image
-              src="https://lh3.googleusercontent.com/W7HQyADZ-HbmIXfupXfjUr0yfYeffaLyX1lSfdOUhfGj1tmq3ygpVIXOSaaFhkFNi8XtuZErvf2ti2uGD7Qz2xHACveNaZQUkCUa16o=h450-rw"
+              src="https://honeybookstudios.com/wp-content/uploads/2020/07/DSC5651.jpg"
               alt="Campsite Main Image"
               borderRadius="lg"
               objectFit="cover"
@@ -47,7 +60,7 @@ const Night = () => {
           </Box>
           <Box>
             <Image
-              src="https://restaurantindia.s3.ap-south-1.amazonaws.com/s3fs-public/2023-07/New%20restaurant.jpg"
+              src="https://honeybookstudios.com/wp-content/uploads/2020/07/cover-5-650x650.jpg"
               alt="Campsite Side Image 1"
               borderRadius="lg"
               objectFit="cover"
@@ -56,7 +69,7 @@ const Night = () => {
               mb={4}
             />
             <Image
-              src="https://gaslamp.org/wp-content/uploads/2021/08/img_7374_optimized.jpeg"
+              src="https://images-pw.pixieset.com/page/6070233/RSP-02305-18be6593.jpg"
               alt="Campsite Side Image 2"
               borderRadius="lg"
               objectFit="cover"
@@ -71,8 +84,7 @@ const Night = () => {
       {/* Details Section */}
       <Box bg="gray.50" py={12} px={8} borderRadius="30px">
         <Heading fontSize="45px" textAlign="center" mb={12} color="#000">
-          Palghar’s Party Places: Hidden Gems for{" "}
-          <span className="text-[#ef964c]"> Night Owls</span>
+          Honeybook studios <span className="text-[#ef964c]">Palghar </span>
         </Heading>
         <Text
           fontSize="19px"
@@ -82,54 +94,53 @@ const Night = () => {
           textAlign="justify"
           color="gray.800"
         >
-          <strong className="text-xl  ">1. Bars and Casual Lounges :</strong>
-          <br /> <br /> While Palghar isn’t a hub for high-profile nightclubs,
-          it has a modest selection of bars and lounges that cater to those
-          seeking a relaxing drink. Small local bars and pubs serve a variety of
-          beverages, including chilled beer, spirits, and cocktails. Many places
-          also offer snacks and appetizers that pair well with your drinks.
-          While the options might be limited, the friendly atmosphere and
-          pocket-friendly prices make it worth the visit.
+          <strong className="text-xl  ">HoneyBook Studios :</strong>
+          <br /> <br />
+          Honeybook Studios in Palghar offers a remarkable experience for
+          couples looking for a unique pre-wedding photoshoot. The studio
+          features over 30 themed sets, including distinctive backdrops like the
+          Swiss Tram, which evokes a European-style charm, and the Magnanimous
+          Fort, perfect for regal photoshoots. For a more opulent feel, couples
+          can choose the Royal Palace set, while the Bali Nest brings in a
+          tropical vibe, and the Pride of Rajasthan set adds a traditional
+          touch. With such variety, couples can create diverse and memorable
+          photo moments.
           <br />
           <br />
           <strong className="text-xl  ">
-            2. Resort Bars and Private Drinking Spaces:
-          </strong>{" "}
-          <br /> <br />
-          Resorts in Palghar, such as Silent Hills and Kelva Beach Resort, often
-          have their own bars or allow guests to bring their own drinks. These
-          spots provide a more curated experience, offering a mix of drinks
-          along with cozy seating areas. Enjoy your beverages while soaking in
-          serene views of nature or a poolside setting, making it a perfect
-          escape from the everyday routine.
+            Comprehensive Services:
+          </strong> <br /> <br />
+          They provides a variety of services to ensure a hassle-free and
+          enjoyable pre-wedding experience: Outfit Rentals: Choose from a wide
+          selection of beautiful outfits to suit your theme. Professional Makeup
+          Artists: Expert makeup artists to enhance your look and make sure
+          you're camera-ready. Photography Equipment: High-end cameras and gear
+          to capture the perfect moments. Buffet-Style Meals: Refreshments are
+          available to keep the energy up throughout the shoot. Props: A range
+          of props to add a personal touch and fun element to your photos.
           <br />
           <br />
-          <strong className="text-xl  ">
-            3. Liquor Shops and BYOB Locations:
-          </strong>{" "}
-          <br /> <br />
-          For those who prefer their own setup, there are several liquor shops
-          around Palghar where you can stock up on your choice of alcohol. Many
-          beaches and picnic spots in the area are BYOB-friendly, allowing
-          groups to enjoy a casual drinking experience amidst picturesque
-          surroundings. Just ensure to maintain cleanliness and adhere to local
-          regulations. Though Palghar’s drinking scene is understated compared
-          to urban nightlife, it offers a laid-back and budget-friendly
-          experience, perfect for intimate gatherings and unwinding in a
-          tranquil environment
+          <strong className="text-xl  ">Supprotive Crew :</strong> <br /> <br />
+          The Crew ensures everything goes smoothly by providing a dedicated
+          production crew: Assistance with Poses: The team is there to guide you
+          with poses, ensuring the best shots. Seamless Setup: The crew handles
+          all the technical aspects, so you can focus on enjoying the shoot.
+          With its wide variety of backdrops, convenient services, and dedicated
+          team, Honeybook Studios is the perfect destination for a memorable
+          pre-wedding photoshoot in Palghar.
         </Text>
       </Box>
 
       {/* Map Section */}
       <Heading textAlign="center" mb={6} pt={12}>
-        <span className="text-[#ef964c]">Palghar&nbsp;</span>Camping Escapes:
-        Find Your Peace!
+        <span className="text-[#ef964c]">Explore Honeybook&nbsp;</span>
+        Studios: Location & Map
       </Heading>
       <div className="travel flex items-center justify-between p-10 bg-[#f0f8ff] rounded-[30px]">
         <div className="map w-1/2 h-[400px]">
           <iframe
             title="Campsite Map"
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60103.44649316179!2d72.69003026137032!3d19.69280015036753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be71d6274d544f3%3A0x89ef26a3aeff1e4f!2sShirgaon%20Beach!5e0!3m2!1sen!2sin!4v1733384821984!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d481545.8730761714!2d72.57438294443772!3d19.452240947737124!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be71184976f7533%3A0xe370b54f034b7a5!2sHoneybook%20Studios%20Location!5e0!3m2!1sen!2sin!4v1733725747785!5m2!1sen!2sin"
             width="100%"
             height="100%"
             style={{ border: 0, borderRadius: "12px" }}
@@ -192,83 +203,6 @@ const Night = () => {
         </div>
       </div>
 
-      {/* Steps Section */}
-      <Box maxW="100%" mx="auto" padding="55px 0px ">
-        <Heading
-          as="h3"
-          fontSize="4xl"
-          mb={6}
-          padding="25px"
-          textAlign="center"
-        >
-          Explore Clubs & <span className="text-[#ef964c]"> Bars </span> in
-          Palghar
-        </Heading>
-
-        <SimpleGrid
-          columns={{ base: 1, md: 2, lg: 4 }}
-          spacing={8}
-          justifyItems="stretch"
-        >
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontSize="2xl" fontWeight="600" color="#ef964c" mb={2}>
-              Kokum Bar & Lounge
-            </Text>
-            <Text>
-              Tania Planet Vasai West, Vasai-Virar, Maharashtra 401202
-            </Text>
-          </Box>
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontSize="2xl" fontWeight="600" color="#ef964c" mb={2}>
-              The Sports Bar & Lounge,
-            </Text>
-            <Text>
-              Yashavant Nagar, Virar West, Mumbai, Virar, Maharashtra 401303.
-            </Text>
-          </Box>
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontSize="2xl" fontWeight="600" color="#ef964c" mb={2}>
-              The Secret
-            </Text>
-            <Text>D-2 Kothari Compound,Thane West Maharashtra 400608</Text>
-          </Box>
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontSize="2xl" fontWeight="600" color="#ef964c" mb={2}>
-              Agent Jack’s Bar Vasai
-            </Text>
-            <Text>Tarke Nagar, Vasai East 401208 Maharashtra </Text>
-          </Box>
-        </SimpleGrid>
-      </Box>
-
       <Box
         bg="#ef964c"
         backgroundImage={sun}
@@ -297,6 +231,98 @@ const Night = () => {
         <Button bg="white" _hover={{ bg: "" }} px={8} py={4}>
           Book Your Adventure
         </Button>
+      </Box>
+
+      <PhotoGallery
+        photos={photos}
+        title={
+          <span>
+            Capture Your{" "}
+            <span style={{ color: "#ef964c" }}> Special Ocassion </span> at
+            Honeybook
+          </span>
+        }
+      />
+
+      {/* Steps Section */}
+      <Box maxW="100%" mx="auto" padding="55px 0px ">
+        <Heading
+          as="h3"
+          fontSize="4xl"
+          mb={6}
+          padding="25px"
+          textAlign="center"
+        >
+          <span className="text-[#ef964c]"> </span>
+        </Heading>
+
+        <SimpleGrid
+          columns={{ base: 1, md: 2, lg: 4 }}
+          spacing={8}
+          justifyItems="stretch"
+        >
+          <Box
+            p={6}
+            border="1px solid"
+            borderColor="#ef964c"
+            borderRadius="xl"
+            boxShadow="md"
+            textAlign="center"
+          >
+            <Text fontSize="2xl" fontWeight="600" color="#ef964c" mb={2}>
+              Pre-wedding shoot
+            </Text>
+            <Text>
+              Make your golden period memorable and capture frames that you
+              shall love all through your life
+            </Text>
+          </Box>
+          <Box
+            p={6}
+            border="1px solid"
+            borderColor="#ef964c"
+            borderRadius="xl"
+            boxShadow="md"
+            textAlign="center"
+          >
+            <Text fontSize="2xl" fontWeight="600" color="#ef964c" mb={2}>
+              Family portrait
+            </Text>
+            <Text>A single frame that captures all your loved ones</Text>
+          </Box>
+          <Box
+            p={6}
+            border="1px solid"
+            borderColor="#ef964c"
+            borderRadius="xl"
+            boxShadow="md"
+            textAlign="center"
+          >
+            <Text fontSize="2xl" fontWeight="600" color="#ef964c" mb={2}>
+              Proposal Set
+            </Text>
+            <Text>
+              Got a dream proposal in mind but need the perfect setting? We've
+              got you covered!
+            </Text>
+          </Box>
+          <Box
+            p={6}
+            border="1px solid"
+            borderColor="#ef964c"
+            borderRadius="xl"
+            boxShadow="md"
+            textAlign="center"
+          >
+            <Text fontSize="2xl" fontWeight="600" color="#ef964c" mb={2}>
+              Maternity & child shoot
+            </Text>
+            <Text>
+              Come here and make your precious bond inevitable. Capturing the
+              purest form of love{" "}
+            </Text>
+          </Box>
+        </SimpleGrid>
       </Box>
 
       {/* Slider for Other Activities */}
@@ -366,4 +392,4 @@ const Night = () => {
   );
 };
 
-export default Night;
+export default Prewedding;
