@@ -42,7 +42,7 @@ import BeachDetails from "./Components/Details/BeachDetails";
 import WaterParksComponent from "./Components/Details/Waterpark";
 import Night from "./Components/Details/Night";
 import Prewedding from "./Components/Details/Prewedding";
-import Wine from "./Components/Details/Wines";
+import Wines from "./Components/Details/Wines";
 
 import Paragliding from "./Components/Details/Paragliding";
 const AdminLayout = () => {
@@ -117,7 +117,7 @@ const App = () => {
         },
         { path: "/temple", element: <TemplesList /> },
         { path: "/waterpark", element: <WaterParksComponent /> },
-        { path: "/wine", element: <Wine /> },
+        { path: "/wine", element: <Wines /> },
         { path: "/paragliding", element: <Paragliding /> },
         { path: "/beach", element: <BeachesList /> },
         { path: "/camp", element: <CampsiteMainPage /> },

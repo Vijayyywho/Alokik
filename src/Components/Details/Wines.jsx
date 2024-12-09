@@ -36,7 +36,7 @@ const photos = [
   "https://hillzillwines.com/wp-content/uploads/2021/07/HillZill_Wines_Products_Arka_07.jpg",
 ];
 
-const Wine = () => {
+const Wines = () => {
   const navigate = useNavigate();
   const handleRedirect = (link) => {
     window.scrollTo(0, 0); // Scroll to top
@@ -397,4 +397,4 @@ const Wine = () => {
   );
 };
 
-export default Wine;
+export default Wines;
