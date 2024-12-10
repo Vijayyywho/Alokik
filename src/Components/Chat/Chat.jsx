@@ -15,7 +15,7 @@ import "./Chat.scss";
 import AuthContext from "../../Context/AuthContext";
 import apiRequest from "../../Lib/apiRequest";
 import { format } from "timeago.js";
-import { SocketContext } from "../..Context/SocketContext";
+import { SocketContext } from "../../Context/SocketContext";
 import { useNotificationStore } from "../../Lib/notificationStore";
 import { deleteChat } from "../../Lib/loaders";
 
