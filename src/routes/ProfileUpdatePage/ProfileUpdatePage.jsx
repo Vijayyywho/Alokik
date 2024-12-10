@@ -20,7 +20,7 @@ import {
   ModalFooter,
   useDisclosure,
 } from "@chakra-ui/react";
-import { AuthContext } from "../..Context/AuthContext";
+import AuthContext from "../..Context/AuthContext";
 import apiRequest from "../../Lib/apiRequest";
 import { useNavigate } from "react-router-dom";
 import UploadWidget from "../../Components/Upload/UploadWidget";

@@ -19,7 +19,7 @@ import {
   IconButton,
 } from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
-import { AuthContext } from "../..Context/AuthContext";
+import AuthContext from "../..Context/AuthContext";
 import apiRequest from "../../Lib/apiRequest";
 import WhatsIncluded from "./Include";
 import CustomerReviews from "./Review";

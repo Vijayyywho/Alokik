@@ -7,7 +7,7 @@ import {
   UserOutlined,
   LoadingOutlined,
 } from "@ant-design/icons";
-import { AuthContext } from "../..Context/AuthContext";
+import AuthContext from "../..Context/AuthContext";
 import { useNotificationStore } from "../../Lib/notificationStore";
 import "./Navbar.scss";
 

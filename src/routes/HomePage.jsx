@@ -2,7 +2,7 @@ import "./HomePage.scss";
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom"; // Import useNavigate
 import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "..Context/AuthContext";
+import AuthContext from "../Context/AuthContext";
 import AnimatedDiv from "../Components/AnimateDiv";
 import { motion } from "framer-motion"; // Import framer-motion
 import Newlist from "../Components/List/Newlist";
