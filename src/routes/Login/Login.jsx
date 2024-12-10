@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import apiRequest from "../../Lib/apiRequest";
-import { AuthContext, useAuth } from "../../context/AuthContext";
+import { AuthContext, useAuth } from "../..Context/AuthContext";
 
 function Login() {
   const { updateUser } = useAuth();

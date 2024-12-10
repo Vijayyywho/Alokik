@@ -12,10 +12,10 @@ import {
 } from "@chakra-ui/react";
 import { DeleteIcon } from "@chakra-ui/icons";
 import "./chat.scss";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../..Context/AuthContext";
 import apiRequest from "../../Lib/apiRequest";
 import { format } from "timeago.js";
-import { SocketContext } from "../../context/SocketContext";
+import { SocketContext } from "../..Context/SocketContext";
 import { useNotificationStore } from "../../Lib/notificationStore";
 import { deleteChat } from "../../Lib/loaders";
 
