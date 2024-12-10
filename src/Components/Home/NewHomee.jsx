@@ -1,6 +1,6 @@
 import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import AuthContext from "../..Context/AuthContext"; // Adjust according to your project structure
+import AuthContext from "../../Context/AuthContext"; // Adjust according to your project structure
 import "./Homee.scss";
 
 const NewHomee = () => {
