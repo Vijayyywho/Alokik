@@ -17,7 +17,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
-      external: ["react", "react-dom"], // Avoid bundling React and ReactDOM for compatibility
+      // Remove "external" to ensure React and ReactDOM are bundled
       output: {
         globals: {
           react: "React",
