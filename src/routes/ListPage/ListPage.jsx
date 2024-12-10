@@ -1,6 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import "./listpage.scss";
-import Filter from "../../components/filter/Filter";
+import Filter from "../../Components/filter/Filter";
 import { useLoaderData } from "react-router-dom";
 
 // Lazy load the components
