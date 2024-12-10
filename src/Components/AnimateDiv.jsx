@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useInView } from "react-intersection-observer";
 
 const AnimatedDiv = ({ children }) => {
   const { ref, inView } = useInView({
