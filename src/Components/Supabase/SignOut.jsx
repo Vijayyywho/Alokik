@@ -1,5 +1,4 @@
 // src/Components/SignOut.js
-import React from "react";
 import { signOut } from "./Auth";
 
 const SignOut = () => {

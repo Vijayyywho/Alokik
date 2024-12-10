@@ -1,4 +1,3 @@
-import React from "react";
 import "./Card.scss";
 import AuthContext from "../../Context/AuthContext";
 import { useContext } from "react";

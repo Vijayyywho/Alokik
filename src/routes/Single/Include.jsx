@@ -1,5 +1,3 @@
-import React from "react";
-
 const WhatsIncluded = ({ selectedAmenities }) => {
   if (!selectedAmenities) {
     return null; // In case no amenities are passed

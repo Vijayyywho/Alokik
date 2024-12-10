@@ -1,4 +1,3 @@
-import React from "react";
 import "./Map.scss";
 import "leaflet/dist/leaflet.css";
 import Pin from "../Pin/Pin";

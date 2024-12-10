@@ -1,5 +1,3 @@
-import React from "react";
-
 const PhotoGallery = ({ photos, style, title }) => {
   return (
     <div className="py-10">

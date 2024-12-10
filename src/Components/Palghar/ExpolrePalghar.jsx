@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "./Palghar.scss";
 import { motion } from "framer-motion";
 import Slider from "react-slick";

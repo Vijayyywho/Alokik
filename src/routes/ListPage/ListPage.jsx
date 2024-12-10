@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react";
+import { Suspense, lazy } from "react";
 import "./listpage.scss";
 import Filter from "../../Components/filter/Filter";
 import { useLoaderData } from "react-router-dom";

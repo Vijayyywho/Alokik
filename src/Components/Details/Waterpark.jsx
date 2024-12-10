@@ -1,5 +1,5 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import React from "react";
+
 import "swiper/css/bundle";
 import sun from "../../../public/sun.jpg";
 import { useNavigate } from "react-router-dom";

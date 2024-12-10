@@ -1,4 +1,3 @@
-import React from "react";
 import "./About.scss";
 import ticket from "../../../public/ticket.svg";
 import baloon from "../../../public/balloon.svg";

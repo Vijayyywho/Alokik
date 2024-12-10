@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { onAuthStateChange } from "./Components/Supabase/Auth"; // Adjust the path as needed
 import SignOut from "./Components/Supabase/SignOut";
 import HomePage from "./routes/HomePage";

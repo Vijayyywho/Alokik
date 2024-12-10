@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react"; // Import useContext
+import { useState, useContext } from "react"; // Import useContext
 import {
   Box,
   Button,

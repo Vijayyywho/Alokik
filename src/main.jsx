@@ -1,6 +1,6 @@
-import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
+import React from "react";
 import "./index.scss";
 import { SocketContextProvider } from "./Context/SocketContext.jsx";
 import SmoothScroll from "./Components/SmoothScroll.jsx";

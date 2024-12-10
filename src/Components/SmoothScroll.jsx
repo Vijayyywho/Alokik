@@ -1,5 +1,4 @@
 import React from "react";
-
 const SmoothScroll = ({ children }) => {
   React.useEffect(() => {
     document.documentElement.style.scrollBehavior = "smooth";

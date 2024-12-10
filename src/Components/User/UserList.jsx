@@ -1,5 +1,5 @@
 // src/Components/UserList.js
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const supabase = createClient(
   "https://xeavgjmnzautfzxwxprx.supabase.co", // Replace with your Supabase project URL

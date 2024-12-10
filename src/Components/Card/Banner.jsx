@@ -1,4 +1,3 @@
-import React from "react";
 import "./Banner.scss";
 import { useNavigate } from "react-router-dom";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import "./Home2.scss";
 import SearchSection from "../SearchBar/Search2";
 

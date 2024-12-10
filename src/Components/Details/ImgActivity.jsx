@@ -1,4 +1,3 @@
-import React from "react";
 import { Box, Image, Text, SimpleGrid, Heading } from "@chakra-ui/react";
 import { Link, useNavigate } from "react-router-dom";
 

@@ -1,4 +1,3 @@
-import React from "react";
 import Slider from "react-slick";
 import { Box, Image, Text, Badge, HStack } from "@chakra-ui/react";
 import { listData } from "../../Lib/dummydata";

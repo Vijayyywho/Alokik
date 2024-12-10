@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Box, Image, Text, Badge, Button, HStack } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { StarIcon } from "@chakra-ui/icons";
