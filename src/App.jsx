@@ -11,7 +11,7 @@ import "./index.css";
 import Register from "../src/routes/Register/Register";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import ProfileUpdatePage from "./routes/ProfileUpdatePage/ProfileUpdatePage";
-import { AuthContext } from "./Context/AuthContext";
+import AuthContext from "./Context/AuthContext";
 import NewPostPage from "./routes/NewPost/NewPostPage";
 import {
   profilePageLoader,

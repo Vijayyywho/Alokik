@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Spinner } from "@chakra-ui/react";
-import "./filter.scss";
+import "./Filter.scss";
 import { useSearchParams } from "react-router-dom";
 
 function Filter({ posts }) {
