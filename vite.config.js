@@ -6,18 +6,27 @@ import resolve from "@rollup/plugin-node-resolve";
 export default defineConfig({
   plugins: [
     react(),
-    resolve(), // Ensure this is included to resolve third-party dependencies
+    resolve(), // Resolves third-party dependencies for Rollup
   ],
   server: {
     host: "0.0.0.0", // Allow access from other devices on the network
     port: 5173, // Ensure this matches the port you are using
   },
   optimizeDeps: {
-    include: ["react-intersection-observer"], // Explicitly include the package for pre-bundling
+    include: ["react-intersection-observer"], // Pre-bundle this dependency to avoid runtime errors
   },
   build: {
     rollupOptions: {
-      external: ["react", "react-dom"], // Exclude React from the build to avoid conflicts
+      external: ["react", "react-dom"], // Avoid bundling React and ReactDOM for compatibility
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
+      },
+    },
+    commonjsOptions: {
+      transformMixedEsModules: true, // Allows CommonJS and ESModules to interoperate smoothly
     },
   },
 });
