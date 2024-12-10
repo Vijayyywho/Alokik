@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { ArrowLeftIcon, ArrowRightIcon } from "@chakra-ui/icons";
 import { AuthContext } from "../../context/AuthContext";
-import apiRequest from "../../lib/apiRequest";
+import apiRequest from "../../Lib/apiRequest";
 import WhatsIncluded from "./Include";
 import CustomerReviews from "./Review";
 import Footer from "../../Components/Footer/Footer";

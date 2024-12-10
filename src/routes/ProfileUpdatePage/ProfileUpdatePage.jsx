@@ -21,7 +21,7 @@ import {
   useDisclosure,
 } from "@chakra-ui/react";
 import { AuthContext } from "../../context/AuthContext";
-import apiRequest from "../../lib/apiRequest";
+import apiRequest from "../../Lib/apiRequest";
 import { useNavigate } from "react-router-dom";
 import UploadWidget from "../../Components/Upload/UploadWidget";
 

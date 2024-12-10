@@ -12,7 +12,7 @@ import {
   Link,
 } from "@chakra-ui/react";
 import { useNavigate, Link as RouterLink } from "react-router-dom"; // Import useNavigate and RouterLink for navigation
-import apiRequest from "../../lib/apiRequest"; // Adjust the path as necessary
+import apiRequest from "../../Lib/apiRequest"; // Adjust the path as necessary
 
 function Register() {
   const [username, setUsername] = useState("");

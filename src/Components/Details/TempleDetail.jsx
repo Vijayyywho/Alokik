@@ -21,7 +21,7 @@ import {
   UnorderedList,
   ListItem,
 } from "@chakra-ui/react";
-import apiRequest from "../../lib/apiRequest";
+import apiRequest from "../../Lib/apiRequest";
 import { Autoplay, EffectFade } from "swiper/modules"; // Import the necessary modules
 
 const TempleDetail = () => {

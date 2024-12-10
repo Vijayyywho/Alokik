@@ -8,7 +8,7 @@ import {
   LoadingOutlined,
 } from "@ant-design/icons";
 import { AuthContext } from "../../Context/AuthContext";
-import { useNotificationStore } from "../../lib/notificationStore";
+import { useNotificationStore } from "../../Lib/notificationStore";
 import "./Navbar.scss";
 
 function Navbar() {

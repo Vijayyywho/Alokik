@@ -13,10 +13,10 @@ import {
 import { DeleteIcon } from "@chakra-ui/icons";
 import "./chat.scss";
 import { AuthContext } from "../../context/AuthContext";
-import apiRequest from "../../lib/apiRequest";
+import apiRequest from "../../Lib/apiRequest";
 import { format } from "timeago.js";
 import { SocketContext } from "../../context/SocketContext";
-import { useNotificationStore } from "../../lib/notificationStore";
+import { useNotificationStore } from "../../Lib/notificationStore";
 import { deleteChat } from "../../Lib/loaders";
 
 function Chat({ chats, setChats }) {

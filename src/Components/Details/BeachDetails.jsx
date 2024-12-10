@@ -15,7 +15,7 @@ import {
 } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import apiRequest from "../../lib/apiRequest";
+import apiRequest from "../../Lib/apiRequest";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import sun from "../../../public/sun.jpg";

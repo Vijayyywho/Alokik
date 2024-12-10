@@ -10,7 +10,7 @@ import {
   Center,
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
-import apiRequest from "../../lib/apiRequest";
+import apiRequest from "../../Lib/apiRequest";
 
 const BeachesList = () => {
   const [beaches, setBeaches] = useState([]);

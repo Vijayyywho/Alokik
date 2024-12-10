@@ -10,7 +10,7 @@ import {
   Heading,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
-import apiRequest from "../../lib/apiRequest";
+import apiRequest from "../../Lib/apiRequest";
 import { AuthContext, useAuth } from "../../context/AuthContext";
 
 function Login() {

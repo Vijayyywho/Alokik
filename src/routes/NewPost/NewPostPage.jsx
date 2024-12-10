@@ -16,7 +16,7 @@ import {
 } from "@chakra-ui/react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
-import apiRequest from "../../lib/apiRequest";
+import apiRequest from "../../Lib/apiRequest";
 import UploadWidget from "../../Components/Upload/UploadWidget";
 import { useNavigate } from "react-router-dom";
 
