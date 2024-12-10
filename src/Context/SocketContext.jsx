@@ -9,14 +9,13 @@ export const SocketContextProvider = ({ children }) => {
   const [socket, setSocket] = useState(null);
 
   useEffect(() => {
-    // Dynamically choose the socket server URL based on environment
     const socketURL =
       process.env.NODE_ENV === "production"
-        ? "https://alokik-bwwg.vercel.app/" // Replace with your production URL
-        : "https://socket-4yr6.onrender.com/"; // Development URL
+        ? "https://alokik-bwwg.vercel.app" // Production URL (Vercel)
+        : "https://socket-4yr6.onrender.com"; // Development URL (Render)
 
     const newSocket = io(socketURL, {
-      transports: ["websocket"], // Optional, depending on your setup
+      transports: ["websocket"], // Ensure WebSocket is used
     });
 
     setSocket(newSocket);
@@ -28,7 +27,6 @@ export const SocketContextProvider = ({ children }) => {
 
   useEffect(() => {
     if (currentUser && socket) {
-      // Emit the user ID when the user is logged in
       socket.emit("newUser", currentUser.id);
     }
   }, [currentUser, socket]);
