@@ -13,7 +13,7 @@ export const SocketContextProvider = ({ children }) => {
     const socketURL =
       process.env.NODE_ENV === "production"
         ? "https://alokik-bwwg.vercel.app/" // Replace with your production URL
-        : "http://localhost:4000"; // Development URL
+        : "https://socket-4yr6.onrender.com/"; // Development URL
 
     const newSocket = io(socketURL, {
       transports: ["websocket"], // Optional, depending on your setup
