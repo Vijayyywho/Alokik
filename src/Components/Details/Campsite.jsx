@@ -69,7 +69,7 @@ const CampsiteMainPage = () => {
       </Box>
 
       {/* Details Section */}
-      <Box bg="gray.50" py={12} px={8} borderRadius="30px">
+      <Box bg="gray.50" p={0} py={12} px={2} borderRadius="30px ">
         <Heading
           textAlign="center"
           fontSize={{ base: "3xl", md: "3xl" }}
@@ -82,7 +82,7 @@ const CampsiteMainPage = () => {
         <Text
           fontSize={{ base: "sm", md: "md", lg: "lg" }}
           maxW="1200"
-          p={5}
+          p={2}
           mx="auto"
           textAlign="justify"
           color="gray.800"
