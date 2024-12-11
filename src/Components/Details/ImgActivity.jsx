@@ -60,7 +60,7 @@ const ImageGallery = ({ title }) => {
   return (
     <Box pt={8} my={10}>
       <Text
-        fontSize={{ base: "2xl", md: "5xl" }}
+        fontSize={{ base: "4xl", md: "5xl" }}
         fontWeight="bold"
         textAlign="center"
         color="black"
@@ -68,7 +68,7 @@ const ImageGallery = ({ title }) => {
         {title}
       </Text>
       <Text
-        fontSize={{ base: "md", md: "lg" }}
+        fontSize={{ base: "sm", md: "lg" }}
         textAlign="center"
         pt={5}
         pb={10}
