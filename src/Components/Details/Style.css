@@ -1,0 +1,205 @@
+/* General Styling */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+}
+
+/* Responsive Image Gallery */
+.image-gallery {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  max-width: 1500px;
+  margin: auto;
+  padding: 16px;
+}
+
+.image-gallery .main-image {
+  grid-column: span 2;
+  border-radius: 12px;
+  object-fit: cover;
+  width: 100%;
+  height: 250px;
+}
+
+.image-gallery .side-image {
+  border-radius: 12px;
+  object-fit: cover;
+  width: 100%;
+  height: 220px;
+}
+
+/* Adjust layout for medium screens */
+@media (min-width: 768px) {
+  .image-gallery {
+    grid-template-columns: 2fr 1fr;
+  }
+  .image-gallery .main-image {
+    height: 450px;
+  }
+}
+
+/* Details Section */
+.details-section {
+  background-color: #4291df;
+  padding: 48px 24px;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.details-section h1 {
+  font-size: 36px;
+  color: #000;
+}
+
+.details-section h1 span {
+  color: #ef964c;
+}
+
+.details-section p {
+  font-size: 18px;
+  color: #555;
+  line-height: 1.8;
+  margin-top: 24px;
+  text-align: justify;
+}
+
+/* Map Section */
+.map-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 32px;
+  background-color: #f0f8ff;
+  border-radius: 30px;
+  justify-content: space-between;
+}
+
+.map-section iframe {
+  flex: 1;
+  border-radius: 12px;
+  border: none;
+  height: 400px;
+}
+
+/* Card Styling */
+.specs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.specs .card {
+  background-color: #fff;
+  width: 220px;
+  height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  transition: transform 0.2s ease-in-out;
+}
+
+.specs .card:hover {
+  border-color: #ef964c;
+  transform: scale(1.05);
+}
+
+.specs .card img {
+  width: 96px;
+  height: 96px;
+  margin-bottom: 16px;
+}
+
+/* Steps Section */
+.steps-section {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.steps-section h3 {
+  font-size: 32px;
+  margin-bottom: 24px;
+}
+
+.steps-section h3 span {
+  color: #ef964c;
+}
+
+.steps-section .step-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.steps-section .step-card {
+  padding: 16px;
+  border: 1px solid #ef964c;
+  border-radius: 12px;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .steps-section .step-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .steps-section .step-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* Call-to-Action Banner */
+.call-to-action {
+  background-color: #ef964c;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center;
+  padding: 64px 24px;
+  color: #fff;
+  text-align: center;
+  border-radius: 12px;
+}
+
+.call-to-action button {
+  background-color: #fff;
+  color: #ef964c;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.call-to-action button:hover {
+  background-color: #ef964c;
+  color: #fff;
+}
+
+/* Slider Section */
+.slider-section {
+  padding: 32px 16px;
+}
+
+.slider-section h1 {
+  text-align: center;
+  margin-bottom: 24px;
+  font-size: 32px;
+}
+
+.slider-section h1 span {
+  color: #ef964c;
+}
+
+.slider-section .swiper-slide {
+  text-align: center;
+  padding: 16px;
+  border: 1px solid #ef964c40;
+  border-radius: 12px;
+}

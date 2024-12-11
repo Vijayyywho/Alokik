@@ -10,6 +10,7 @@ import {
   Button,
   Stack,
 } from "@chakra-ui/react";
+import "./Style.css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Link } from "react-router-dom";
@@ -41,7 +42,7 @@ const CampsiteMainPage = () => {
               borderRadius="lg"
               objectFit="cover"
               w="100%"
-              h={{ base: "250px", md: "450px" }}
+              h={{ base: "200px", md: "450px" }}
             />
           </Box>
           <Box>
@@ -69,12 +70,17 @@ const CampsiteMainPage = () => {
 
       {/* Details Section */}
       <Box bg="gray.50" py={12} px={8} borderRadius="30px">
-        <Heading fontSize="45px" textAlign="center" mb={12} color="#000">
+        <Heading
+          textAlign="center"
+          fontSize={{ base: "3xl", md: "3xl" }}
+          mb={12}
+          color="#000"
+        >
           Camping in Palghar: A{" "}
           <span className="text-[#ef964c]">Unique Experience</span>
         </Heading>
         <Text
-          fontSize="19px"
+          fontSize={{ base: "sm", md: "md", lg: "lg" }}
           maxW="1200"
           p={5}
           mx="auto"
@@ -120,12 +126,17 @@ const CampsiteMainPage = () => {
       </Box>
 
       {/* Map Section */}
-      <Heading textAlign="center" mb={6} pt={12}>
+      <Heading
+        textAlign="center"
+        mb={6}
+        pt={12}
+        fontSize={{ base: "2xl", md: "3xl" }}
+      >
         <span className="text-[#ef964c]">Palghar&nbsp;</span>Camping Escapes:
         Find Your Peace!
       </Heading>
-      <div className="travel flex items-center justify-between p-10 bg-[#f0f8ff] rounded-[30px]">
-        <div className="map w-1/2 h-[400px]">
+      <div className="travel flex flex-col md:flex-row items-center justify-between pb-5 lg:p-10 sm:p-0 md:p-0 bg-[#f0f8ff] rounded-[30px]">
+        <div className="map w-full md:w-full lg:w-1/2 h-[400px]">
           <iframe
             title="Campsite Map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60103.44649316179!2d72.69003026137032!3d19.69280015036753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be71d6274d544f3%3A0x89ef26a3aeff1e4f!2sShirgaon%20Beach!5e0!3m2!1sen!2sin!4v1733384821984!5m2!1sen!2sin"
@@ -140,7 +151,7 @@ const CampsiteMainPage = () => {
         {/* Specs Section */}
         <div className="specs justify-end flex items-center gap-10 w-1/2">
           {/* Column for Diamond and Medal */}
-          <div className="flex flex-col items-center gap-5">
+          <div className="flex flex-col items-center gap-5 p-5">
             <motion.div
               whileHover={{
                 scale: 1.1,
@@ -275,22 +286,22 @@ const CampsiteMainPage = () => {
         backgroundAttachment="fixed"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
-        mt="4%"
-        py="5%"
+        mt={{ base: "4%", md: "4%" }} // Consistent margin on small and medium screens
+        py={{ base: "10%", md: "5%" }} // Adjust padding on different screen sizes
         color="white"
         textAlign="center"
         borderRadius="8px"
       >
         <Heading
-          fontSize="5xl"
-          mb={10}
+          fontSize={{ base: "3xl", sm: "4xl", md: "5xl" }} // Responsive font size for heading
+          mb={{ base: 6, sm: 8, md: 10 }} // Adjust margin-bottom for different screen sizes
           maxW="900px"
           textAlign="center"
           mx="auto"
         >
           Ready for an Unforgettable Camping Experience?
         </Heading>
-        <Text fontSize="lg" mb={12}>
+        <Text fontSize={{ base: "md", sm: "lg" }} mb={{ base: 8, sm: 12 }}>
           Discover the beauty of Palghar like never before. Book your spot now!
         </Text>
         <Button bg="white" _hover={{ bg: "" }} px={8} py={4}>
@@ -299,11 +310,36 @@ const CampsiteMainPage = () => {
       </Box>
 
       {/* Slider for Other Activities */}
+      {/* Slider for Other Activities */}
       <Box py={8} maxW="1400px" mx="auto">
-        <Heading fontSize="40px" textAlign="center" py="2%" mb={6}>
+        <Heading
+          fontSize={{ base: "24px", md: "30px", lg: "40px" }}
+          textAlign="center"
+          py="2%"
+          mb={6}
+        >
           Other Activities in <span className="text-[#ef964c]">Palghar</span>
         </Heading>
-        <Swiper spaceBetween={20} slidesPerView={4} loop>
+
+        <Swiper
+          spaceBetween={20}
+          loop
+          slidesPerView={1} // Default to 1 slide per view
+          breakpoints={{
+            320: {
+              slidesPerView: 1, // 1 slide per view for small screens
+            },
+            768: {
+              slidesPerView: 2, // 2 slides per view for medium screens (tablets)
+            },
+            1024: {
+              slidesPerView: 3, // 3 slides per view for large screens (small laptops)
+            },
+            1400: {
+              slidesPerView: 4, // 4 slides per view for extra large screens (desktops)
+            },
+          }}
+        >
           {[
             {
               title: "Beach Walk",
