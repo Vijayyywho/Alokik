@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import "./Palghar.scss";
 import { motion } from "framer-motion";
 import Slider from "react-slick";
@@ -313,30 +313,36 @@ const ExplorePalghar = ({ title }) => {
           </div>
         </div>
       </section>
-      {/* Promotional Banner */}
       <Box
         bg="#ef964c"
         mt="4%"
-        py="2%"
+        py={{ base: "4", md: "6" }}
         color="white"
         textAlign="center"
         borderRadius="15px"
-        mb="45px"
+        mb={{ base: "20px", md: "45px" }}
       >
         <Heading
-          fontSize="5xl"
-          pt="25px"
-          mb={10}
-          maxW="900px"
+          fontSize={{ base: "2xl", md: "5xl" }}
+          pt={{ base: "15px", md: "25px" }}
+          mb={{ base: "4", md: "10" }}
+          maxW="90%"
           textAlign="center"
           mx="auto"
         >
           Ready for an Unforgettable Camping Experience?
         </Heading>
-        <Text fontSize="lg" mb={12}>
+        <Text fontSize={{ base: "sm", md: "lg" }} mb={{ base: "6", md: "12" }}>
           Discover the beauty of Palghar like never before. Book your spot now!
         </Text>
-        <Button bg="white" _hover={{ bg: "" }} px={8} py={4}>
+        <Button
+          bg="white"
+          color="#ef964c"
+          fontSize={{ base: "sm", md: "md" }}
+          _hover={{ bg: "#ffe6cc" }}
+          px={{ base: "6", md: "8" }}
+          py={{ base: "3", md: "4" }}
+        >
           Book Your Adventure
         </Button>
       </Box>

@@ -295,104 +295,60 @@
       background-color: #ef964c;
     }
   }
-  /* Media Queries for responsiveness */
-  @media (max-width: 1200px) {
-    .heading {
-      height: 60vh;
-    }
-
-    .tabs-section h2 {
-      font-size: 2rem;
-    }
-
-    .tabs .tab-button {
-      font-size: 0.9rem;
-      padding: 8px 15px;
-    }
-  }
-
-  @media (max-width: 1024px) {
-    .heading {
-      height: 50vh;
-    }
-
-    .tabs-section h2 {
-      font-size: 1.8rem;
-    }
-
-    .tabs .tab-button {
-      font-size: 0.8rem;
-      padding: 6px 12px;
-    }
-
-    .image-container {
-      height: 300px;
-    }
-
-    .image-title {
-      font-size: 1.2rem;
-    }
-  }
 
   @media (max-width: 768px) {
     .heading {
-      height: 45vh;
+      height: 60vh;
+      h1 {
+        font-size: 50px;
+      }
+      p {
+        font-size: 18px;
+      }
     }
 
-    .heading h1 {
-      font-size: 40px;
-    }
+    .tabs-section {
+      h2 {
+        font-size: 1.8rem;
+        text-align: center;
+      }
 
-    .heading p {
-      font-size: 18px;
-    }
+      .tabs {
+        justify-content: start; /* Center align tabs for smaller screens */
+        gap: 8px;
 
-    .tabs-section h2 {
-      font-size: 1.5rem;
+        .tab-button {
+          font-size: 0.9rem;
+          padding: 8px 15px;
+        }
+      }
     }
-
-    .tabs .tab-button {
-      font-size: 0.75rem;
-      padding: 6px 10px;
-    }
-
-    .image-container {
-      height: 250px;
-    }
-
-    .image-title {
-      font-size: 1rem;
+    .history-container {
+      flex-direction: column-reverse;
     }
   }
 
   @media (max-width: 480px) {
-    .heading {
-      height: 40vh;
-    }
+    .tabs-section {
+      h2 {
+        font-size: 1.8rem;
+        padding-left: 0; /* Center align text */
+      }
 
-    .heading h1 {
-      font-size: 30px;
-    }
+      .tabs {
+        justify-content: start;
+        flex-wrap: wrap; /* Ensure all tabs fit on small screens */
+        padding-left: 0;
+        gap: 5px;
 
-    .heading p {
-      font-size: 16px;
+        .tab-button {
+          font-size: 0.9rem;
+          padding: 10px 16px; /* Reduce padding for smaller screens */
+        }
+      }
     }
-
-    .tabs-section h2 {
-      font-size: 1.2rem;
-    }
-
-    .tabs .tab-button {
-      font-size: 0.7rem;
-      padding: 5px 10px;
-    }
-
-    .image-container {
-      height: 200px;
-    }
-
-    .image-title {
-      font-size: 0.9rem;
+    .history-container {
+      flex-direction: column-reverse;
     }
   }
 }
