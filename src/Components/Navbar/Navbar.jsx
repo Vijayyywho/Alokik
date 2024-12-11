@@ -5,7 +5,6 @@ import {
   LoginOutlined,
   UserAddOutlined,
   UserOutlined,
-  LoadingOutlined,
 } from "@ant-design/icons";
 import AuthContext from "../../Context/AuthContext";
 import { useNotificationStore } from "../../Lib/notificationStore";
@@ -114,7 +113,6 @@ function Navbar() {
       </div>
 
       {/* Mobile Side Menu */}
-      {/* Mobile Side Menu */}
       <div
         className={`side-menu ${
           open ? "open" : ""
@@ -133,6 +131,13 @@ function Navbar() {
             Home
           </Link>
           <Link
+            to="/list"
+            className="block text-lg text-black hover:text-blue-500 py-3"
+            onClick={() => handleClick("/list")}
+          >
+            Hotels & Resorts
+          </Link>
+          <Link
             to="/about"
             className="block text-lg text-black hover:text-blue-500 py-3"
             onClick={() => handleClick("/about")}
@@ -140,18 +145,18 @@ function Navbar() {
             About
           </Link>
           <Link
+            to="/explore"
+            className="block text-lg text-black hover:text-blue-500 py-3"
+            onClick={() => handleClick("/explore")}
+          >
+            Explore Palghar
+          </Link>
+          <Link
             to="/contact"
             className="block text-lg text-black hover:text-blue-500 py-3"
             onClick={() => handleClick("/contact")}
           >
             Contact
-          </Link>
-          <Link
-            to="/agents"
-            className="block text-lg text-black hover:text-blue-500 py-3"
-            onClick={() => handleClick("/list")}
-          >
-            Hotels & Resorts
           </Link>
 
           {/* Show profile button if the user is authenticated */}
