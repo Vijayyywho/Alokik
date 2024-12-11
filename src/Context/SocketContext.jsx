@@ -11,14 +11,23 @@ export const SocketContextProvider = ({ children }) => {
   useEffect(() => {
     const socketURL =
       process.env.NODE_ENV === "production"
-        ? "https://alokik-bwwg.vercel.app" // Production URL (Vercel)
-        : "https://socket-4yr6.onrender.com"; // Development URL (Render)
+        ? "https://socket-4yr6.onrender.com" // Replace with your production socket server
+        : "http://localhost:10000"; // Replace with your local socket server URL/port
 
     const newSocket = io(socketURL, {
-      transports: ["websocket"], // Ensure WebSocket is used
+      transports: ["websocket", "polling"], // Use WebSocket first, fallback to polling
+      withCredentials: true, // Allow credentials if CORS is configured
     });
 
     setSocket(newSocket);
+
+    newSocket.on("connect", () => {
+      console.log("Socket connected:", newSocket.id);
+    });
+
+    newSocket.on("disconnect", (reason) => {
+      console.log("Socket disconnected:", reason);
+    });
 
     return () => {
       newSocket.disconnect();
