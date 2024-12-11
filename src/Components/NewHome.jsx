@@ -15,7 +15,7 @@ import {
   Icon,
 } from "@chakra-ui/react";
 import { SearchIcon } from "@chakra-ui/icons";
-import { listData } from "../Lib/dummydata";
+import { listData } from "../Libb/dummydata";
 
 const HomePagee = () => {
   return (

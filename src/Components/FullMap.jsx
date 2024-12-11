@@ -1,4 +1,4 @@
-import React, { useState, Suspense } from "react";
+import { useState, Suspense } from "react";
 import { useLoaderData } from "react-router-dom"; // Import useLoaderData
 import MyMap from "./Map/MyMap";
 

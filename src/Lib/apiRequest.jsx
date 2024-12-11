@@ -1,7 +1,11 @@
 import axios from "axios";
 
+// Dynamically set the baseURL based on the environment
 const apiRequest = axios.create({
-  baseURL: "https://alokikapiiii.onrender.com/api", // Replace with your production API URL
+  baseURL:
+    process.env.NODE_ENV === "production"
+      ? "https://alokikapiiii.onrender.com/api" // Production API URL
+      : "http://localhost:3000/api", // Local development API URL
   withCredentials: true, // If you need to send cookies
 });
 
