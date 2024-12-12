@@ -54,20 +54,22 @@ const TemplesList = () => {
                 border: "1px solid #ef964c",
               }}
             >
-              <Image
-                src={temple.urls[0]}
-                alt={temple.title}
-                boxSize="450px"
-                height="300px"
-                objectFit="cover"
-                borderRadius="2xl"
-              />
+              <Link to={`/temple/${temple.id}`}>
+                <Image
+                  src={temple.urls[0]}
+                  alt={temple.title}
+                  boxSize="450px"
+                  height="300px"
+                  objectFit="cover"
+                  borderRadius="2xl"
+                />
+              </Link>
               <VStack align="start" spacing={4} flex="1">
                 <Text fontSize="2xl" fontWeight="bold" color="#ef964c">
                   {temple.title}
                 </Text>
                 <Text noOfLines={4} color="gray.700">
-                  {temple.dec}
+                  {temple.description}
                 </Text>
                 <Link to={`/temple/${temple.id}`}>
                   <Text

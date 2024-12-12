@@ -100,7 +100,10 @@ const TempleDetail = () => {
         ))}
       </Swiper>
       <h2 className="text-black text-5xl text-center font-bold">
-        {temple.title}
+        {temple.title.split(" ")[0]}{" "}
+        <span style={{ color: "#ef964c" }}>
+          {temple.title.split(" ").slice(1).join(" ")}
+        </span>
       </h2>
 
       {loading && <Text>Loading...</Text>}
@@ -108,16 +111,17 @@ const TempleDetail = () => {
       {temple && (
         <VStack spacing={6} align="center">
           <Box
-            boxShadow="lg"
+            boxShadow="2xl"
             borderRadius="xl"
             border="none"
             overflow="hidden"
+            mt="10"
             width="100%"
           >
-            <Box p={6}>
+            <Box p={8} px={12} pt={12}>
               {/* Iterate through the temple description and split paragraphs */}
-              {temple.dec &&
-                temple.dec.split("\n").map((paragraph, index) => {
+              {temple.description &&
+                temple.description.split("\n").map((paragraph, index) => {
                   // Check if the paragraph starts with a specific keyword (for subheading)
                   if (paragraph.startsWith("Subheading:")) {
                     return (
@@ -222,7 +226,7 @@ const TempleDetail = () => {
         </div>
       </div>
       {/* Steps Section */}
-      <Box maxW="100%" mx="auto" padding="55px 0px ">
+      <Box maxW="100%" mx="auto" padding="55px 0px">
         <Heading
           as="h3"
           fontSize="4xl"
@@ -240,62 +244,26 @@ const TempleDetail = () => {
           spacing={8}
           justifyItems="stretch"
         >
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontWeight="bold" color="#ef964c" mb={2}>
-              Step 1:
-            </Text>
-            <Text>Choose your campsite and book your slot in advance.</Text>
-          </Box>
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontWeight="bold" color="#ef964c" mb={2}>
-              Step 2:
-            </Text>
-            <Text>
-              Pack your essentials, including tents and sleeping bags.
-            </Text>
-          </Box>
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontWeight="bold" color="#ef964c" mb={2}>
-              Step 3:
-            </Text>
-            <Text>Arrive early to set up and enjoy the scenic beauty.</Text>
-          </Box>
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontWeight="bold" color="#ef964c" mb={2}>
-              Step 4:
-            </Text>
-            <Text>
-              Participate in campfire activities and explore nearby spots.
-            </Text>
-          </Box>
+          {temple.activities && temple.activities.length > 0 ? (
+            temple.activities.map((activity, index) => (
+              <Box
+                key={index}
+                p={6}
+                border="1px solid"
+                borderColor="#ef964c"
+                borderRadius="xl"
+                boxShadow="md"
+                textAlign="center"
+              >
+                <Text fontWeight="bold" color="#ef964c" mb={2}>
+                  Activity {index + 1}:
+                </Text>
+                <Text>{activity}</Text>
+              </Box>
+            ))
+          ) : (
+            <Text>No activities available for this temple.</Text>
+          )}
         </SimpleGrid>
       </Box>
 

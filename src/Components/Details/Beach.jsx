@@ -55,14 +55,16 @@ const BeachesList = () => {
                 border: "1px solid #ef964c",
               }}
             >
-              <Image
-                src={beach.urls[0]}
-                alt={beach.title}
-                boxSize="450px"
-                height="300px"
-                objectFit="cover"
-                borderRadius="2xl"
-              />
+              <Link to={`/beach/${beach.id}`}>
+                <Image
+                  src={beach.urls[0]}
+                  alt={beach.title}
+                  boxSize="450px"
+                  height="300px"
+                  objectFit="cover"
+                  borderRadius="2xl"
+                />
+              </Link>
               <VStack align="start" spacing={4} flex="1">
                 <Text fontSize="2xl" fontWeight="bold" color="#ef964c">
                   {beach.title}

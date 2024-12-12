@@ -5,6 +5,7 @@ import MyMap from "../../Components/Map/MyMap";
 import Slider from "../../Components/slider/Slider";
 import { useLoaderData } from "react-router-dom";
 import DOMPurify from "dompurify";
+import { FaLocationArrow } from "react-icons/fa";
 import {
   Button,
   Modal,
@@ -116,7 +117,14 @@ const SinglePage = () => {
       <div className="details">
         <div className="wrapper">
           <Slider images={post.images.slice(0, 4)} />
-          <Button onClick={openModal} colorScheme="teal" mt={4}>
+          <Button
+            onClick={openModal}
+            colorScheme="white
+          "
+            color="#ef964c"
+            border="1px solid #ef964c"
+            mt={4}
+          >
             See All Images
           </Button>
           <div className="info">
@@ -124,7 +132,8 @@ const SinglePage = () => {
               <div className="post">
                 <h1>{post.title}</h1>
                 <div className="address">
-                  <img src="./pin.png" alt="Location Pin" />
+                  <FaLocationArrow size={25} color="#ef964c" />{" "}
+                  {/* React Icon */}
                   <span>{post.address}</span>
                 </div>
                 <div className="price">₹{post.price}</div>

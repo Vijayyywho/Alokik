@@ -2,7 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "./SearchBar.scss";
 
+// Backend logic values
 const types = ["buy", "rent"];
+
+// Frontend display labels
+const typeLabels = {
+  buy: "Hotels",
+  rent: "Resorts",
+};
 
 const SearchBar = () => {
   const [query, setquery] = useState({
@@ -29,7 +36,7 @@ const SearchBar = () => {
             onClick={() => switchType(type)}
             className={query.type === type ? "active" : ""}
           >
-            {type}
+            {typeLabels[type]} {/* Use the label mapping */}
           </button>
         ))}
       </div>
@@ -37,9 +44,9 @@ const SearchBar = () => {
         <input
           onChange={handleChange}
           type="text"
-          name="city" // Ensure this matches the key in the state
+          name="city"
           placeholder="City"
-          value={query.city} // Bind the input to the 'city' key
+          value={query.city}
         />
         <img className="location" src="./loc.png" alt="" />
         <input
