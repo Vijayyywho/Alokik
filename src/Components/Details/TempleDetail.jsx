@@ -7,6 +7,7 @@ import baloon from "../../../public/balloon.svg";
 import diamond from "../../../public/diamond.svg";
 import medal from "../../../public/medal.svg";
 import sun from "../../../public/sun.jpg";
+
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -30,6 +31,7 @@ const TempleDetail = () => {
     window.scrollTo(0, 0); // Scroll to top
     navigate(link); // Navigate to the specified route
   };
+
   const { id } = useParams(); // Get the temple id from the URL
   const [temple, setTemple] = useState(null); // State to store temple data
   const [loading, setLoading] = useState(true); // Loading state
@@ -105,7 +107,6 @@ const TempleDetail = () => {
           {temple.title.split(" ").slice(1).join(" ")}
         </span>
       </h2>
-
       {loading && <Text>Loading...</Text>}
       {error && <Text>{error}</Text>}
       {temple && (
@@ -266,7 +267,6 @@ const TempleDetail = () => {
           )}
         </SimpleGrid>
       </Box>
-
       <Box
         bg="#ef964c"
         backgroundImage={sun}
@@ -296,7 +296,6 @@ const TempleDetail = () => {
           Book Your Adventure
         </Button>
       </Box>
-
       {/* Slider for Other Activities */}
       <Box py={8} maxW="1400px" mx="auto">
         <Heading fontSize="40px" textAlign="center" py="2%" mb={6}>

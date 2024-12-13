@@ -45,6 +45,8 @@ import Prewedding from "./Components/Details/Prewedding";
 import Wines from "./Components/Details/Wines";
 
 import Paragliding from "./Components/Details/Paragliding";
+import WaterfallsList from "./Components/Details/Waterfall";
+import HistoricPlacesList from "./Components/Details/Historic";
 const AdminLayout = () => {
   return (
     <div className="flex bg-gray-900 text-gray-100 overflow-hidden">
@@ -120,7 +122,9 @@ const App = () => {
         { path: "/wine", element: <Wines /> },
         { path: "/paragliding", element: <Paragliding /> },
         { path: "/beach", element: <BeachesList /> },
+        { path: "/waterfall", element: <WaterfallsList /> },
         { path: "/camp", element: <CampsiteMainPage /> },
+        { path: "/historic", element: <HistoricPlacesList /> },
         { path: "/night", element: <Night /> },
         { path: "/prewedding", element: <Prewedding /> },
         { path: "/beach/:id", element: <BeachDetails /> },

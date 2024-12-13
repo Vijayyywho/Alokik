@@ -16,14 +16,14 @@ const tours = [
       "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/2c/85/da/be/caption.jpg?w=900&h=-1&s=1",
     colSpan: "md:col-span-1",
     rowSpan: "row-span-1",
-    link: "/historic-places",
+    link: "/historic",
   },
   {
     title: "Waterfalls",
     imageUrl: "https://live.staticflickr.com/7087/7047250115_197668e1d5_b.jpg",
     colSpan: "md:col-span-1",
     rowSpan: "row-span-2",
-    link: "/waterfalls",
+    link: "/waterfall",
   },
   {
     title: "Beaches",
