@@ -6,8 +6,7 @@ import "swiper/css/bundle";
 import baloon from "../../../public/balloon.svg";
 import diamond from "../../../public/diamond.svg";
 import medal from "../../../public/medal.svg";
-import sun from "../../../public/sun.jpg";
-
+import sunn from "../../../public/sun.jpg";
 import { useNavigate } from "react-router-dom";
 import {
   Box,
@@ -37,8 +36,6 @@ const TempleDetail = () => {
   const [loading, setLoading] = useState(true); // Loading state
   const [error, setError] = useState(null); // Error state
 
-  console.log(id, "id");
-
   // Fetch temple data based on the id
   useEffect(() => {
     const fetchTemple = async () => {
@@ -55,7 +52,6 @@ const TempleDetail = () => {
 
     fetchTemple();
   }, [id]); // Re-run when the temple ID changes
-  console.log(temple, "temple data");
 
   // Display loading or error state
   if (loading) {
@@ -67,7 +63,7 @@ const TempleDetail = () => {
   }
 
   return (
-    <Container maxW="container.xg" p={6}>
+    <Container maxW="container.xg" p={2}>
       {/* Main Swiper Section */}
       <Swiper
         modules={[Autoplay, EffectFade]}
@@ -79,17 +75,8 @@ const TempleDetail = () => {
         slidesPerView={1}
         loop
         effect="fade"
-        className="main-slider w-full h-[500px] mb-10 rounded-lg relative"
+        className="main-slider w-full sm:w-[90%] h-[250px] sm:h-[450px] mb-10 rounded-lg relative"
       >
-        {/* Overlay and Heading */}
-        <div className="absolute flex-col inset-0 bg-black bg-opacity-50 rounded-lg flex justify-center items-center z-10">
-          {/* 
-          <p className="text-white text-xl tracking-wide font-light mt-6">
-            Dive into fun-filled experiences and unforgettable memories in the
-            heart of Palghar.
-          </p> */}
-        </div>
-
         {/* Main Swiper Images */}
         {temple.urls.map((url, index) => (
           <SwiperSlide key={index}>
@@ -101,14 +88,15 @@ const TempleDetail = () => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <h2 className="text-black text-5xl text-center font-bold">
+
+      {/* Temple Name Banner */}
+      <h2 className="text-black text-4xl sm:text-5xl text-center font-bold mb-4">
         {temple.title.split(" ")[0]}{" "}
         <span style={{ color: "#ef964c" }}>
           {temple.title.split(" ").slice(1).join(" ")}
         </span>
       </h2>
-      {loading && <Text>Loading...</Text>}
-      {error && <Text>{error}</Text>}
+      {/* Temple Description */}
       {temple && (
         <VStack spacing={6} align="center">
           <Box
@@ -119,11 +107,10 @@ const TempleDetail = () => {
             mt="10"
             width="100%"
           >
-            <Box p={8} px={12} pt={12}>
+            <Box p={2} px={5} pt={12}>
               {/* Iterate through the temple description and split paragraphs */}
               {temple.description &&
                 temple.description.split("\n").map((paragraph, index) => {
-                  // Check if the paragraph starts with a specific keyword (for subheading)
                   if (paragraph.startsWith("Subheading:")) {
                     return (
                       <Heading
@@ -138,16 +125,14 @@ const TempleDetail = () => {
                       </Heading>
                     );
                   } else if (paragraph.trim() === "") {
-                    // Empty lines, just return a separator
                     return <Box key={index} mb={4} />;
                   } else {
-                    // Default paragraphs or bullet point items
                     return (
-                      <UnorderedList key={index} spacing={2} mb={4}>
-                        <ListItem fontSize="lg" color="gray.700">
+                      <Box key={index} mb={4}>
+                        <Text fontSize="lg" color="gray.700">
                           {paragraph}
-                        </ListItem>
-                      </UnorderedList>
+                        </Text>
+                      </Box>
                     );
                   }
                 })}
@@ -155,13 +140,14 @@ const TempleDetail = () => {
           </Box>
         </VStack>
       )}
+
       {/* Map Section */}
       <Heading textAlign="center" mb={6} pt={12}>
         Navigate to the <span className="text-[#ef964c]"> Temple's &nbsp;</span>
         Location
       </Heading>
-      <div className="travel flex items-center justify-between p-10 bg-[#f0f8ff] rounded-[30px]">
-        <div className="map w-1/2 h-[400px]">
+      <div className="travel flex flex-wrap items-center justify-between p-10 bg-[#f0f8ff] rounded-[30px]">
+        <div className="map w-full sm:w-1/2 h-[250px] sm:h-[400px] mb-6 sm:mb-0">
           <iframe
             title="Campsite Map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d60103.44649316179!2d72.69003026137032!3d19.69280015036753!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be71d6274d544f3%3A0x89ef26a3aeff1e4f!2sShirgaon%20Beach!5e0!3m2!1sen!2sin!4v1733384821984!5m2!1sen!2sin"
@@ -174,22 +160,21 @@ const TempleDetail = () => {
         </div>
 
         {/* Specs Section */}
-        <div className="specs justify-end flex items-center gap-10 w-1/2">
-          {/* Column for Diamond and Medal */}
+        <div className="specs justify-end flex flex-col sm:flex-row items-center gap-10 w-full sm:w-1/2">
           <div className="flex flex-col items-center gap-5">
             <motion.div
               whileHover={{
                 scale: 1.1,
                 transition: { duration: 0.2 },
               }}
-              className="boxx  w-[220px] h-[220px] bg-white p-10 text-center rounded-lg shadow-md border hover:border-orange-500"
+              className="boxx w-[200px] h-[200px] bg-white p-8 text-center rounded-lg shadow-md border hover:border-orange-500"
             >
               <img
                 src={diamond}
                 alt="Diamond Icon"
-                className="w-[9.5rem] h-12  mb-4"
+                className="w-[8rem] h-12 mb-4"
               />
-              <h1 className="text-5xl font-bold text-orange-500 mb-2">240</h1>
+              <h1 className="text-4xl font-bold text-orange-500 mb-2">240</h1>
               <p className="text-gray-700">Total Destination</p>
             </motion.div>
             <motion.div
@@ -197,35 +182,35 @@ const TempleDetail = () => {
                 scale: 1.1,
                 transition: { duration: 0.2 },
               }}
-              className="boxx w-[220px] h-[220px] bg-white p-10 text-center rounded-lg shadow-md border hover:border-orange-500"
+              className="boxx w-[200px] h-[200px] bg-white p-8 text-center rounded-lg shadow-md border hover:border-orange-500"
             >
               <img
                 src={medal}
                 alt="Medal Icon"
-                className="w-[9.5rem] h-12 mb-4"
+                className="w-[8rem] h-12 mb-4"
               />
-              <h1 className="text-5xl font-bold text-orange-500 mb-2">240</h1>
+              <h1 className="text-4xl font-bold text-orange-500 mb-2">240</h1>
               <p className="text-gray-700">Total Destination</p>
             </motion.div>
           </div>
 
-          {/* Column for Balloon */}
           <div className="flex flex-col items-center ">
             <motion.div
               whileHover={{ scale: 1.1 }}
-              className="boxxx w-[220px] h-[220px] bg-white p-10 text-center rounded-lg shadow-md border  hover:border-orange-500"
+              className="boxxx w-[200px] h-[200px] bg-white p-8 text-center rounded-lg shadow-md border hover:border-orange-500"
             >
               <img
                 src={baloon}
                 alt="Balloon Icon"
-                className="w-[9.5rem] h-12 mb-4"
+                className="w-[8rem] h-12 mb-4"
               />
-              <h1 className="text-5xl font-bold text-orange-500 mb-2">240</h1>
+              <h1 className="text-4xl font-bold text-orange-500 mb-2">240</h1>
               <p className="text-gray-700">Total Destination</p>
             </motion.div>
           </div>
         </div>
       </div>
+
       {/* Steps Section */}
       <Box maxW="100%" mx="auto" padding="55px 0px">
         <Heading
@@ -241,16 +226,16 @@ const TempleDetail = () => {
         </Heading>
 
         <SimpleGrid
-          columns={{ base: 1, md: 2, lg: 4 }}
-          spacing={8}
-          justifyItems="stretch"
+          columns={{ base: 1, sm: 2, md: 3 }}
+          spacing="5"
+          p="5"
+          align="center"
         >
           {temple.activities && temple.activities.length > 0 ? (
             temple.activities.map((activity, index) => (
               <Box
                 key={index}
                 p={6}
-                border="1px solid"
                 borderColor="#ef964c"
                 borderRadius="xl"
                 boxShadow="md"
@@ -267,41 +252,75 @@ const TempleDetail = () => {
           )}
         </SimpleGrid>
       </Box>
+
+      {/* Booking Button */}
       <Box
         bg="#ef964c"
-        backgroundImage={sun}
+        backgroundImage={sunn}
         backgroundSize="cover"
         backgroundAttachment="fixed"
         backgroundPosition="center"
         backgroundRepeat="no-repeat"
-        mt="4%"
-        py="5%"
+        mt={{ base: "5%", md: "4%" }} // Adjust margin for mobile and desktop
+        py={{ base: "8%", md: "5%" }} // Adjust padding for mobile and desktop
         color="white"
         textAlign="center"
         borderRadius="8px"
       >
         <Heading
-          fontSize="5xl"
-          mb={10}
+          fontSize={{ base: "3xl", md: "5xl" }} // Responsive font size for Heading
+          mb={{ base: 6, md: 10 }} // Adjust margin for mobile and desktop
           maxW="900px"
           textAlign="center"
           mx="auto"
         >
           Ready for an Unforgettable Camping Experience?
         </Heading>
-        <Text fontSize="lg" mb={12}>
+        <Text
+          fontSize={{ base: "md", lg: "lg" }} // Adjust font size for mobile and desktop
+          mb={{ base: 8, md: 12 }} // Adjust margin for mobile and desktop
+        >
           Discover the beauty of Palghar like never before. Book your spot now!
         </Text>
-        <Button bg="white" _hover={{ bg: "" }} px={8} py={4}>
+        <Button
+          bg="white"
+          _hover={{ bg: "" }}
+          px={{ base: 6, md: 8 }} // Adjust padding for mobile and desktop
+          py={{ base: 3, md: 4 }} // Adjust padding for mobile and desktop
+        >
           Book Your Adventure
         </Button>
       </Box>
       {/* Slider for Other Activities */}
       <Box py={8} maxW="1400px" mx="auto">
-        <Heading fontSize="40px" textAlign="center" py="2%" mb={6}>
+        <Heading
+          fontSize={{ base: "24px", md: "30px", lg: "40px" }}
+          textAlign="center"
+          py="2%"
+          mb={6}
+        >
           Other Activities in <span className="text-[#ef964c]">Palghar</span>
         </Heading>
-        <Swiper spaceBetween={20} slidesPerView={4} loop>
+
+        <Swiper
+          spaceBetween={20}
+          loop
+          slidesPerView={1} // Default to 1 slide per view
+          breakpoints={{
+            320: {
+              slidesPerView: 1, // 1 slide per view for small screens
+            },
+            768: {
+              slidesPerView: 2, // 2 slides per view for medium screens (tablets)
+            },
+            1024: {
+              slidesPerView: 3, // 3 slides per view for large screens (small laptops)
+            },
+            1400: {
+              slidesPerView: 4, // 4 slides per view for extra large screens (desktops)
+            },
+          }}
+        >
           {[
             {
               title: "Beach Walk",
