@@ -30,7 +30,7 @@ const TemplesList = () => {
   }, []); // Empty dependency array to run the effect only once after the first render
 
   return (
-    <Box p={5} minH="100vh" backgroundColor="white">
+    <Box p={3} minH="100vh" backgroundColor="white">
       <Text
         fontSize={{ base: "3xl", md: "5xl" }} // Responsive font size
         textAlign="center"
@@ -51,8 +51,8 @@ const TemplesList = () => {
               align="center"
               border="1px solid #e2e8f0"
               borderRadius="2xl"
-              p={6}
-              w="80%"
+              p={3}
+              w="100%"
               maxW="1000px" // Keeps cards wide but not too large
               boxShadow="lg"
               _hover={{
@@ -65,8 +65,8 @@ const TemplesList = () => {
                 <Image
                   src={temple.urls[0]}
                   alt={temple.title}
-                  boxSize={{ base: "300px", md: "450px" }} // Responsive image size
-                  height="300px"
+                  width={{ base: "100%", md: "400px" }} // Smaller width for large screens
+                  height={{ base: "300px", md: "300px" }} // Rectangular height
                   objectFit="cover"
                   borderRadius="2xl"
                 />
