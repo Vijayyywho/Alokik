@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-
+import { useParams, useNavigate } from "react-router-dom";
 import {
   Box,
   Image,
@@ -8,16 +7,13 @@ import {
   Text,
   Heading,
   VStack,
-  HStack,
-  Divider,
   Button,
   Stack,
 } from "@chakra-ui/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { Autoplay, EffectFade } from "swiper/modules"; // Import the necessary modules
 import apiRequest from "../../Lib/apiRequest";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 import sun from "../../../public/sun.jpg";
 import sunn from "../../../public/sunn.jpg";
 
@@ -31,14 +27,11 @@ const BeachDetail = () => {
   // Inside the component
   const navigate = useNavigate();
 
-  console.log(id, "id");
-
-  // Fetch beach data based on the id
   useEffect(() => {
     const fetchBeach = async () => {
       try {
-        const response = await apiRequest(`/beach/${id}`); // Assuming your API has an endpoint like `/beaches/:id`
-        setBeach(response.data); // Store the beach data
+        const response = await apiRequest(`/beach/${id}`);
+        setBeach(response.data);
       } catch (err) {
         console.error("Error fetching beach data:", err);
         setError("Failed to load beach details.");
@@ -47,21 +40,14 @@ const BeachDetail = () => {
       }
     };
 
-    const handleNavigation = () => {
-      window.scrollTo(0, 0); // Scroll to top
-      navigate(`/beach`); // Navigate to the new beach detail page
-    };
-
     fetchBeach();
-  }, [id]); // Re-run when the beach ID changes
-  console.log(beach, "beach data");
+  }, [id]);
 
   useEffect(() => {
-    // Fetch all beaches for the slider
     const fetchBeaches = async () => {
       try {
         const response = await apiRequest(`/beach`);
-        setBeaches(response.data); // Store all beach data
+        setBeaches(response.data);
       } catch (err) {
         console.error("Error fetching beaches:", err);
         setError("Failed to load beaches.");
@@ -71,10 +57,9 @@ const BeachDetail = () => {
     fetchBeaches();
   }, []);
 
-  // Navigation handler for clicking on a beach in the swiper
   const handleNavigation = (beachId) => {
-    window.scrollTo(0, 0); // Scroll to top
-    navigate(`/beach/${beachId}`); // Navigate to the selected beach detail page
+    window.scrollTo(0, 0);
+    navigate(`/beach/${beachId}`);
   };
 
   if (loading) {
@@ -92,16 +77,47 @@ const BeachDetail = () => {
       : [beach.description]
     : [];
 
-  console.log(beach.longitude, "location");
   return (
-    <Box bg="white" p={4}>
-      {/* Image Gallery */}
-      <Box maxW="1500px" mx="auto" p={6}>
+    <Box bg="white" p={0}>
+      {/* Super Slider for Small Screens */}
+      <Box display={{ base: "block", md: "none" }} p={6}>
+        <Swiper
+          modules={[Autoplay, EffectFade]}
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          spaceBetween={20}
+          slidesPerView={1}
+          loop
+          effect="fade"
+          className="main-slider w-full h-[250px] sm:h-[450px] mb-10 rounded-lg relative"
+        >
+          {/* Main Swiper Images */}
+          {beach.urls.map((url, index) => (
+            <SwiperSlide key={index}>
+              <img
+                src={url}
+                alt={`Beach Slide ${index + 1}`}
+                className="w-full h-full object-cover rounded-lg"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </Box>
+
+      {/* Image Gallery for Larger Screens */}
+      <Box
+        maxW="1500px"
+        mx="auto"
+        p={6}
+        display={{ base: "none", md: "block" }}
+      >
         <SimpleGrid columns={{ base: 1, md: 3 }} spacing={4}>
           <Box gridColumn={{ md: "1 / span 2" }}>
             <Image
               src={beach.urls[0]}
-              alt="Campsite Main Image"
+              alt="Beach Main Image"
               borderRadius="lg"
               objectFit="cover"
               w="100%"
@@ -111,7 +127,7 @@ const BeachDetail = () => {
           <Box>
             <Image
               src={beach.urls[1]}
-              alt="Campsite Side Image 1"
+              alt="Beach Side Image 1"
               borderRadius="lg"
               objectFit="cover"
               w="100%"
@@ -120,7 +136,7 @@ const BeachDetail = () => {
             />
             <Image
               src={beach.urls[2]}
-              alt="Campsite Side Image 2"
+              alt="Beach Side Image 2"
               borderRadius="lg"
               objectFit="cover"
               w="100%"
@@ -128,23 +144,26 @@ const BeachDetail = () => {
             />
           </Box>
         </SimpleGrid>
-        <Box mt={4} textAlign="right"></Box>
       </Box>
 
       {/* Details Section */}
       <Box bg="gray.50" py={12} px={8} borderRadius="30px">
-        <Heading fontSize="45px" textAlign="center" mb={12} color="#000">
-          {beach.title}
-          <span className="text-[#ef964c]">&nbsp;Palghar </span>
+        <Heading
+          fontSize={{ base: "3xl", md: "45px" }}
+          textAlign="center"
+          mb={12}
+          color="#000"
+        >
+          {beach.title} <span className="text-[#ef964c]">Palghar</span>
         </Heading>
 
         {/* Split Description into Paragraphs */}
         {splitDescription.length > 1 ? (
           <>
             <Text
-              fontSize="19px"
-              maxW="1200"
-              p={5}
+              fontSize={{ base: "16px", md: "19px" }}
+              maxW="1200px"
+              p={1}
               mx="auto"
               textAlign="justify"
               color="gray.800"
@@ -152,9 +171,9 @@ const BeachDetail = () => {
               {splitDescription[0]}.
             </Text>
             <Text
-              fontSize="19px"
-              maxW="1200"
-              p={5}
+              fontSize={{ base: "16px", md: "19px" }}
+              maxW="1200px"
+              p={1}
               mx="auto"
               textAlign="justify"
               color="gray.800"
@@ -164,8 +183,8 @@ const BeachDetail = () => {
           </>
         ) : (
           <Text
-            fontSize="19px"
-            maxW="1200"
+            fontSize={{ base: "16px", md: "19px" }}
+            maxW="1200px"
             p={5}
             mx="auto"
             textAlign="justify"
@@ -176,7 +195,7 @@ const BeachDetail = () => {
         )}
       </Box>
 
-      {/* Steps Section */}
+      {/* Activities Section */}
       <Box maxW="100%" mx="auto" padding="55px 0px ">
         <Heading
           as="h3"
@@ -186,7 +205,7 @@ const BeachDetail = () => {
           textAlign="center"
         >
           Activities You can Do At{" "}
-          <span className="text-[#ef964c]"> {beach.title} </span>
+          <span className="text-[#ef964c]">{beach.title}</span>
         </Heading>
 
         <SimpleGrid
@@ -194,62 +213,22 @@ const BeachDetail = () => {
           spacing={8}
           justifyItems="stretch"
         >
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontWeight="bold" color="#ef964c" mb={2}>
-              Activity
-            </Text>
-            <Text>{beach.activities[0]}</Text>
-          </Box>
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontWeight="bold" color="#ef964c" mb={2}>
-              Activity
-            </Text>
-            <Text>
-              <Text>{beach.activities[1]}</Text>
-            </Text>
-          </Box>
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontWeight="bold" color="#ef964c" mb={2}>
-              Activity
-            </Text>
-            <Text>{beach.activities[2]}</Text>
-          </Box>
-          <Box
-            p={6}
-            border="1px solid"
-            borderColor="#ef964c"
-            borderRadius="xl"
-            boxShadow="md"
-            textAlign="center"
-          >
-            <Text fontWeight="bold" color="#ef964c" mb={2}>
-              Activity
-            </Text>
-            <Text>
-              <Text>{beach.activities[3]}</Text>
-            </Text>
-          </Box>
+          {beach.activities.map((activity, index) => (
+            <Box
+              key={index}
+              p={6}
+              border="1px solid"
+              borderColor="#ef964c"
+              borderRadius="xl"
+              boxShadow="md"
+              textAlign="center"
+            >
+              <Text fontWeight="bold" color="#ef964c" mb={2}>
+                Activity
+              </Text>
+              <Text>{activity}</Text>
+            </Box>
+          ))}
         </SimpleGrid>
       </Box>
 
@@ -261,7 +240,7 @@ const BeachDetail = () => {
         <Box
           maxW="1200px"
           mx="auto"
-          h="400px"
+          h={{ base: "300px", md: "400px" }}
           borderRadius="2xl"
           overflow="hidden"
         >
@@ -273,9 +252,9 @@ const BeachDetail = () => {
               beach.latitude
             }!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be71d6274d544f3%3A0x89ef26a3aeff1e4f!2s${encodeURIComponent(
               beach.title
-            )}!5e0!3m2!1sen!2sin!4v1733384821984!5m2!1sen!2sin`}
+            )}!5e0!3m2!1sen!2sin`}
             width="100%"
-            height="450"
+            height="100%"
             style={{ border: 0 }}
             allowFullScreen
             loading="lazy"
@@ -283,6 +262,7 @@ const BeachDetail = () => {
         </Box>
       </Box>
 
+      {/* CTA Section */}
       <Box
         bg="#ef964c"
         backgroundImage={sunn}
@@ -297,7 +277,7 @@ const BeachDetail = () => {
         borderRadius="8px"
       >
         <Heading
-          fontSize="5xl"
+          fontSize={{ base: "3xl", md: "5xl" }}
           mb={10}
           maxW="900px"
           textAlign="center"
@@ -305,25 +285,74 @@ const BeachDetail = () => {
         >
           Ready for an Unforgettable Camping Experience?
         </Heading>
-        <Text fontSize="lg" mb={12}>
+        <Text fontSize={{ base: "md", md: "lg" }} mb={12}>
           Discover the beauty of Palghar like never before. Book your spot now!
         </Text>
-        <Button bg="white" _hover={{ bg: "" }} px={8} py={4}>
-          Book Your Adventure
+        <Button
+          colorScheme="teal"
+          size="lg"
+          onClick={() => navigate(`/beach/${id}/booking`)}
+          mb={5}
+        >
+          Book Now
         </Button>
       </Box>
-
       {/* Slider for Other Activities */}
       <Box py={8} maxW="1400px" mx="auto">
-        <Heading fontSize="40px" textAlign="center" py="2%" mb={6}>
-          Explore Other Beaches in{" "}
-          <span className="text-[#ef964c]">Palghar</span>
+        <Heading
+          fontSize={{ base: "24px", md: "30px", lg: "40px" }}
+          textAlign="center"
+          py="2%"
+          mb={6}
+        >
+          Other Activities in <span className="text-[#ef964c]">Palghar</span>
         </Heading>
-        <Swiper spaceBetween={20} slidesPerView={4} loop>
-          {beaches.map((beachItem) => (
-            <SwiperSlide key={beachItem.id}>
+
+        <Swiper
+          spaceBetween={20}
+          loop
+          slidesPerView={1} // Default to 1 slide per view
+          breakpoints={{
+            320: {
+              slidesPerView: 1, // 1 slide per view for small screens
+            },
+            768: {
+              slidesPerView: 2, // 2 slides per view for medium screens (tablets)
+            },
+            1024: {
+              slidesPerView: 3, // 3 slides per view for large screens (small laptops)
+            },
+            1400: {
+              slidesPerView: 4, // 4 slides per view for extra large screens (desktops)
+            },
+          }}
+        >
+          {[
+            {
+              title: "Beach Walk",
+              img: "https://sandee.com/_next/image?url=https%3A%2F%2Flh5.googleusercontent.com%2Fp%2FAF1QipMuCsTZ5vPku8Ebnjoqkr2IWgLB0hJO7ZRJDGvp%3Ds1600-k-no&w=3840&q=75",
+              link: "/beach",
+            },
+            {
+              title: "Trekking",
+              img: "https://assets.zeezest.com/blogs/PROD_Banner_1658501346271.jpg",
+            },
+            {
+              title: "Water Sports",
+              img: "https://media2.thrillophilia.com/images/photos/000/072/269/original/19.jpg?w=753&h=450&dpr=1.5",
+            },
+            {
+              title: "Local Cuisine",
+              img: "https://www.stayvista.com/blog/wp-content/uploads/2024/06/pexels-aditya-mara-425995080-17223836-scaled.jpg",
+            },
+            {
+              title: "Temple Visit",
+              img: "https://miro.medium.com/v2/resize:fit:12000/1*IVzNV9DpfLv4NUt93JAu0w.jpeg",
+            },
+          ].map((activity, index) => (
+            <SwiperSlide key={index}>
               <Box
-                onClick={() => handleNavigation(beachItem.id)} // Navigate to the selected beach
+                onClick={() => handleRedirect(activity.link)}
                 padding="6px"
                 borderRadius="xl"
                 overflow="hidden"
@@ -334,8 +363,8 @@ const BeachDetail = () => {
                 transition="all 0.3s"
               >
                 <Image
-                  src={beachItem.urls[0]}
-                  alt={beachItem.title}
+                  src={activity.img}
+                  alt={activity.title}
                   borderRadius="10px"
                   w="100%"
                   h="200px"
@@ -348,7 +377,7 @@ const BeachDetail = () => {
                   color="#ef964c"
                   py={3}
                 >
-                  {beachItem.title}
+                  {activity.title}
                 </Text>
               </Box>
             </SwiperSlide>
