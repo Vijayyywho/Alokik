@@ -51,7 +51,7 @@ const TemplesList = () => {
               align="center"
               border="1px solid #e2e8f0"
               borderRadius="2xl"
-              p={3}
+              p={4}
               w="100%"
               maxW="1000px" // Keeps cards wide but not too large
               boxShadow="lg"
