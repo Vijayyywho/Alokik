@@ -55,6 +55,7 @@ const BeachesList = () => {
                 border: "1px solid #ef964c",
               }}
             >
+              ,
               <Link to={`/beach/${beach.id}`}>
                 <Image
                   src={beach.urls[0]}
