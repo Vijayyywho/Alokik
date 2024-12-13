@@ -20,7 +20,8 @@ const tours = [
   },
   {
     title: "Waterfalls",
-    imageUrl: "https://live.staticflickr.com/7087/7047250115_197668e1d5_b.jpg",
+    imageUrl:
+      "https://images.pexels.com/photos/19457458/pexels-photo-19457458/free-photo-of-view-of-a-waterfall-and-a-rocky-creek.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     colSpan: "md:col-span-1",
     rowSpan: "row-span-2",
     link: "/waterfall",
@@ -70,7 +71,7 @@ const TourGrid = () => {
               <img
                 src={tour.imageUrl}
                 alt={tour.title}
-                className="w-full h-full object-cover transform group-hover:scale-110 transition duration-500"
+                className="w-full h-full  object-cover transform group-hover:scale-110 transition duration-500"
               />
               <div
                 className="absolute inset-0 bg-black bg-opacity-30 flex justify-start items-end p-4"

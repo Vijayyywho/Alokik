@@ -30,7 +30,7 @@ const TemplesList = () => {
   }, []); // Empty dependency array to run the effect only once after the first render
 
   return (
-    <Box p={3} minH="100vh" backgroundColor="white">
+    <Box p={4} minH="100vh" backgroundColor="white">
       <Text
         fontSize={{ base: "3xl", md: "5xl" }} // Responsive font size
         textAlign="center"
@@ -80,9 +80,16 @@ const TemplesList = () => {
                 </Text>
                 <Link to={`/temple/${temple.id}`}>
                   <Text
-                    color="teal.300"
-                    fontWeight="semibold"
-                    _hover={{ color: "teal.500" }}
+                    color="black"
+                    border="1px solid #ef964c"
+                    borderRadius="10px"
+                    p="1.5"
+                    fontWeight="normal"
+                    _hover={{
+                      color: "#ef964c",
+                      background: "#f0f0f0",
+                      borderColor: "black",
+                    }}
                   >
                     Read More
                   </Text>

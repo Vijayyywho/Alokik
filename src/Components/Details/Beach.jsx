@@ -30,8 +30,14 @@ const BeachesList = () => {
   }, []); // Empty dependency array to run the effect only once after the first render
 
   return (
-    <Box p={5} minH="100vh" backgroundColor="white">
-      <Text fontSize="5xl" textAlign="center" my={8} mb={50} fontWeight="bold">
+    <Box p={4} minH="100vh" backgroundColor="white">
+      <Text
+        fontSize={{ base: "3xl", md: "5xl" }} // Responsive font size
+        textAlign="center"
+        my={{ base: 4, md: 8 }} // Responsive margin
+        mb={{ base: 6, md: 12 }} // Bottom margin for spacing
+        fontWeight="bold"
+      >
         Explore Some Beautiful Beaches in{" "}
         <span style={{ color: "#ef964c" }}>Palghar.</span>
       </Text>
@@ -41,12 +47,12 @@ const BeachesList = () => {
           <Center key={beach.id} w="full">
             <HStack
               spacing={6}
-              flexDirection="row"
+              flexDirection={{ base: "column", md: "row" }} // Responsive flex direction
               align="center"
               border="1px solid #e2e8f0"
               borderRadius="2xl"
-              p={6}
-              w="80%"
+              p={4}
+              w="100%"
               maxW="1000px" // Keeps cards wide but not too large
               boxShadow="lg"
               _hover={{
@@ -55,13 +61,12 @@ const BeachesList = () => {
                 border: "1px solid #ef964c",
               }}
             >
-              ,
               <Link to={`/beach/${beach.id}`}>
                 <Image
                   src={beach.urls[0]}
                   alt={beach.title}
-                  boxSize="450px"
-                  height="300px"
+                  width={{ base: "100%", md: "400px" }} // Smaller width for large screens
+                  height={{ base: "300px", md: "300px" }} // Rectangular height
                   objectFit="cover"
                   borderRadius="2xl"
                 />
@@ -75,9 +80,16 @@ const BeachesList = () => {
                 </Text>
                 <Link to={`/beach/${beach.id}`}>
                   <Text
-                    color="teal.300"
-                    fontWeight="semibold"
-                    _hover={{ color: "teal.500" }}
+                    color="black"
+                    border="1px solid #ef964c"
+                    borderRadius="10px"
+                    p="1.5"
+                    fontWeight="normal"
+                    _hover={{
+                      color: "#ef964c",
+                      background: "#f0f0f0",
+                      borderColor: "black",
+                    }}
                   >
                     Read More
                   </Text>
