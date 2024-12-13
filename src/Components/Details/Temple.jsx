@@ -11,6 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import apiRequest from "../../Lib/apiRequest";
+
 const TemplesList = () => {
   const [temples, setTemples] = useState([]);
 
@@ -30,7 +31,13 @@ const TemplesList = () => {
 
   return (
     <Box p={5} minH="100vh" backgroundColor="white">
-      <Text fontSize="5xl" textAlign="center" my={8} mb={50} fontWeight="bold">
+      <Text
+        fontSize={{ base: "3xl", md: "5xl" }} // Responsive font size
+        textAlign="center"
+        my={{ base: 4, md: 8 }} // Responsive margin
+        mb={{ base: 6, md: 12 }} // Bottom margin for spacing
+        fontWeight="bold"
+      >
         Explore Some Famous Temples of{" "}
         <span style={{ color: "#ef964c" }}>Palghar.</span>
       </Text>
@@ -40,7 +47,7 @@ const TemplesList = () => {
           <Center key={temple.id} w="full">
             <HStack
               spacing={6}
-              flexDirection="row"
+              flexDirection={{ base: "column", md: "row" }} // Responsive flex direction
               align="center"
               border="1px solid #e2e8f0"
               borderRadius="2xl"
@@ -58,7 +65,7 @@ const TemplesList = () => {
                 <Image
                   src={temple.urls[0]}
                   alt={temple.title}
-                  boxSize="450px"
+                  boxSize={{ base: "300px", md: "450px" }} // Responsive image size
                   height="300px"
                   objectFit="cover"
                   borderRadius="2xl"
