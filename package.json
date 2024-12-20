@@ -58,6 +58,9 @@
     "timeago.js": "^4.0.2",
     "zustand": "^5.0.2"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.6.1"
+  },
   "devDependencies": {
     "@rollup/plugin-node-resolve": "^15.3.0",
     "@types/react": "^19.0.0",
