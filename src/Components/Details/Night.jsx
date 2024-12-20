@@ -248,9 +248,9 @@ const Night = () => {
             textAlign="center"
           >
             <Text fontSize="2xl" fontWeight="600" color="#ef964c" mb={2}>
-              The Secret
+              Blu Bar
             </Text>
-            <Text>D-2 Kothari Compound,Thane West Maharashtra 400608</Text>
+            <Text>Club One Rustomjee Global City, Virar West,401303</Text>
           </Box>
           <Box
             p={6}

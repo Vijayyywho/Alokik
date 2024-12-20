@@ -77,7 +77,7 @@ const HomePage = () => {
 
             <SearchBar />
 
-            <div className="boxes">
+            {/* <div className="boxes">
               <div className="box">
                 <h1>16+</h1>
                 <h2>Years Of Experience</h2>
@@ -90,7 +90,7 @@ const HomePage = () => {
                 <h1>500+</h1>
                 <h2>Resorts Listed</h2>
               </div>
-            </div>
+            </div> */}
           </div>
         </motion.div>
 
@@ -98,6 +98,17 @@ const HomePage = () => {
           <motion.img src="/treww.png" alt="Travel Bag" />
         </div>
       </div>
+
+      <AnimatedDiv>
+        <ImageGallery
+          title={
+            <span>
+              Must try Expriences in{" "}
+              <span style={{ color: "#ef964c" }}> Palghar </span>
+            </span>
+          }
+        />
+      </AnimatedDiv>
 
       <div className="cardSection">
         <AnimatedDiv>
@@ -117,21 +128,9 @@ const HomePage = () => {
         <AnimatedDiv>
           <NewHomee />
         </AnimatedDiv>
-        <AnimatedDiv>
-          <ImageGallery
-            title={
-              <span>
-                Must try Expriences in{" "}
-                <span style={{ color: "#ef964c" }}> Palghar </span>
-              </span>
-            }
-          />
-        </AnimatedDiv>
+
         <AnimatedDiv>
           <TourGrid />
-        </AnimatedDiv>
-        <AnimatedDiv>
-          <CardSlider />
         </AnimatedDiv>
 
         <Footer />

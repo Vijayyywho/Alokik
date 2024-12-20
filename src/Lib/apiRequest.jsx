@@ -4,8 +4,8 @@ import axios from "axios";
 const apiRequest = axios.create({
   baseURL:
     process.env.NODE_ENV === "production"
-      ? "https://alokikapiiii.onrender.com/api/" // Production API URL
-      : "http://localhost:3000/api", // Local development API URL
+      ? "https://alokikapiiii.onrender.com/api/"
+      : "http://localhost:3000/api",
   withCredentials: true, // If you need to send cookies
 });
 

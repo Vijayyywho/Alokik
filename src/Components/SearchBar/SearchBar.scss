@@ -1,6 +1,12 @@
 @import "../../responsive.scss";
+
 .searchbar {
   .type {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; // Ensure elements wrap on smaller screens
+    justify-content: space-between;
+
     button {
       padding: 16px 36px;
       border: 1px solid #999;
@@ -8,38 +14,28 @@
       background-color: white;
       text-transform: capitalize;
       border-bottom: none;
+      flex-grow: 1;
 
       &.active {
         background-color: black;
         color: white;
       }
+
       &:first-child {
         border-top-left-radius: 5px;
-        border-right: none;
-
-        @include sm {
-          border-bottom: 1px solid #999;
-          padding: 10px 36px;
-        }
       }
       &:last-child {
         border-top-right-radius: 5px;
-        border-left: none;
-
-        @include sm {
-          border-bottom: 1px solid #999;
-          padding: 10px 36px;
-        }
       }
     }
   }
+
   form {
-    border: 1px solid #999;
     display: flex;
-    justify-content: space-between;
-    height: 50px;
-    gap: 5px;
+    gap: 15px;
     background-color: white;
+
+    border: 1px solid #999;
     @include sm {
       flex-direction: column;
       border: none;
@@ -55,16 +51,19 @@
         position: absolute;
       }
     }
-    input {
-      border: none;
 
-      padding: 0 10px;
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #999;
+
       @include sm {
         padding: 10px;
-        border: 1px solid #999;
       }
     }
+
     button {
+      width: 100%;
       background-color: #ef964c;
       border: none;
       padding: 12px;
@@ -77,6 +76,15 @@
       img {
         width: 25px;
       }
+    }
+  }
+
+  // Ensure dropdowns take full width on small screens
+  .chakra-select {
+    width: 100%;
+    @include sm {
+      width: 100%;
+      margin-bottom: 10px;
     }
   }
 }
