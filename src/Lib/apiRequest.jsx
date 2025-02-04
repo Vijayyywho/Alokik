@@ -6,7 +6,7 @@ const apiRequest = axios.create({
     process.env.NODE_ENV === "production"
       ? "https://alokikapiiii.onrender.com/api/"
       : "http://localhost:3000/api",
-  withCredentials: true, // If you need to send cookies
+  withCredentials: true, // Allow cookies to be sent with the request
 });
 
 export default apiRequest;

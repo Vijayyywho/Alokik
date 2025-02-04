@@ -1,41 +1,64 @@
-import { useState } from "react";
-import { Box, Image, Text, Badge, Button, HStack } from "@chakra-ui/react";
+import { useState, useEffect, useRef } from "react";
+import {
+  Box,
+  Image,
+  Text,
+  Badge,
+  HStack,
+  Skeleton,
+  SkeletonText,
+} from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { StarIcon } from "@chakra-ui/icons";
-import "./List.scss";
 
-const Newlist = ({ items = [], itemsPerPage = 8 }) => {
-  const [currentPage, setCurrentPage] = useState(1); // Initial page is 1
-
-  const totalPages = Math.ceil(items.length / itemsPerPage); // Calculate total pages
-
-  // Function to go to the next page
-  const nextPage = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
-  };
-
-  // Function to go to the previous page
-  const prevPage = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  // Calculate which items to show on the current page
-  const currentItems = items.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
-  );
+const Newlist = ({ items = [], itemsPerPage = 8, isLoading = false }) => {
+  const [visibleItems, setVisibleItems] = useState(itemsPerPage);
+  const loaderRef = useRef(null);
 
   // Function to generate a random rating between 1 and 5
-  const generateRandomRating = () => {
-    return Math.floor(Math.random() * 5) + 1; // Returns a random integer from 1 to 5
-  };
+  const generateRandomRating = () => Math.floor(Math.random() * 5) + 1;
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (
+        loaderRef.current &&
+        loaderRef.current.getBoundingClientRect().top <= window.innerHeight
+      ) {
+        setVisibleItems((prev) => Math.min(prev + itemsPerPage, items.length));
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [items, itemsPerPage]);
+
+  // Skeleton loader placeholders
+  const skeletonPlaceholders = Array.from({ length: itemsPerPage }).map(
+    (_, index) => (
+      <Box
+        key={index}
+        borderWidth="1px"
+        borderRadius="2xl"
+        overflow="hidden"
+        p={3}
+        transition="box-shadow 0.2s ease-in-out"
+        _hover={{ boxShadow: "lg" }}
+      >
+        <Skeleton height="250px" borderRadius="2xl" />
+        <Box p="2">
+          <SkeletonText mt="4" noOfLines={1} spacing="4" />
+          <SkeletonText mt="2" noOfLines={1} spacing="2" />
+          <Skeleton mt="4" height="20px" width="50%" />
+        </Box>
+      </Box>
+    )
+  );
 
   // Check if items are available
-  if (!items.length) {
+  if (!items.length && !isLoading) {
     return <p>No items available</p>;
   }
 
@@ -47,99 +70,87 @@ const Newlist = ({ items = [], itemsPerPage = 8 }) => {
         gap={6}
         mt={10}
       >
-        {currentItems.map((item) => {
-          const randomRating = generateRandomRating();
+        {isLoading
+          ? skeletonPlaceholders
+          : items.slice(0, visibleItems).map((item) => {
+              const randomRating = generateRandomRating();
 
-          return (
-            <Box
-              key={item.id}
-              borderWidth="1px"
-              borderRadius="lg"
-              overflow="hidden"
-              p={5}
-              transition="box-shadow 0.2s ease-in-out"
-              _hover={{ boxShadow: "lg" }}
-            >
-              <Link to={`/list/${item.id}`}>
-                <Image
-                  src={item.images[0]}
-                  alt={item.title}
-                  width="100%"
-                  height="200px"
-                  objectFit="cover"
-                />
-              </Link>
-
-              <Box p="6">
-                <Box display="flex" alignItems="baseline">
-                  <Badge borderRadius="full" px="2" colorScheme="teal">
-                    {item.bedroom} Beds
-                  </Badge>
-                  <Badge borderRadius="full" px="2" ml={2} colorScheme="orange">
-                    {item.bathroom} Baths
-                  </Badge>
-                </Box>
-                <Link to={`/list/${item.id}`}>
-                  <Box
-                    mt="5"
-                    mb="2"
-                    color="#000"
-                    fontWeight="normal"
-                    as="h4"
-                    lineHeight="tight"
-                    fontSize="19px"
-                  >
-                    {item.title}
-                  </Box>
-                </Link>
-                <Box color="#000" fontWeight="700" fontSize="20px">
-                  ₹{item.price}/night
-                </Box>
-                <Box mt="2">
-                  <Text fontSize="18px" color="#505050">
-                    {item.address}
-                  </Text>
-                </Box>
-                <HStack mt="2">
-                  {[...Array(5)].map((_, index) => (
-                    <StarIcon
-                      key={index}
-                      color={index < randomRating ? "#ef964c" : "gray.300"}
+              return (
+                <Box
+                  key={item.id}
+                  borderWidth="1px"
+                  borderRadius="2xl"
+                  overflow="hidden"
+                  p={3}
+                  transition="box-shadow 0.2s ease-in-out"
+                  _hover={{ boxShadow: "lg" }}
+                >
+                  <Link to={`/list/${item.id}`}>
+                    <Image
+                      src={item.images[0]}
+                      alt={item.title}
+                      width="100%"
+                      height="250px"
+                      borderRadius="2xl"
+                      objectFit="cover"
                     />
-                  ))}
-                </HStack>
-              </Box>
-            </Box>
-          );
-        })}
+                  </Link>
+
+                  <Box p="2">
+                    <Box display="flex" alignItems="baseline" pt="3">
+                      <Badge borderRadius="full" px="2" colorScheme="teal">
+                        {item.bedroom} Beds
+                      </Badge>
+                      <Badge
+                        borderRadius="full"
+                        px="2"
+                        ml={2}
+                        colorScheme="orange"
+                      >
+                        {item.bathroom} Baths
+                      </Badge>
+                    </Box>
+                    <Link to={`/list/${item.id}`}>
+                      <Box
+                        mt="5"
+                        mb="2"
+                        color="#000"
+                        fontWeight="normal"
+                        as="h4"
+                        lineHeight="tight"
+                        fontSize="18px"
+                      >
+                        {item.title}
+                      </Box>
+                    </Link>
+                    <Box color="#000" fontWeight="700" fontSize="18px">
+                      ₹{item.price}/night
+                    </Box>
+                    <Box mt="2">
+                      <Text fontSize="16px" color="#505050">
+                        {item.address}
+                      </Text>
+                    </Box>
+                    <HStack mt="2">
+                      {[...Array(5)].map((_, index) => (
+                        <StarIcon
+                          key={index}
+                          color={index < randomRating ? "#ef964c" : "gray.300"}
+                        />
+                      ))}
+                    </HStack>
+                  </Box>
+                </Box>
+              );
+            })}
       </Box>
 
-      {/* Pagination Controls */}
-      <Box textAlign="center" mt={6}>
-        <Button
-          fontSize="15px"
-          fontWeight="400"
-          backgroundColor="#ef964c"
-          color="#fff"
-          onClick={prevPage}
-          disabled={currentPage === 1}
-        >
-          Prev
-        </Button>
-        <span style={{ margin: "0 10px" }}>
-          Page {currentPage} of {totalPages}
-        </span>
-        <Button
-          fontSize="15px"
-          fontWeight="400"
-          backgroundColor="#ef964c"
-          color="#fff"
-          onClick={nextPage}
-          disabled={currentPage === totalPages}
-        >
-          Next
-        </Button>
-      </Box>
+      {/* Loader for Infinite Scrolling */}
+      {visibleItems < items.length && !isLoading && (
+        <Box ref={loaderRef} textAlign="center" mt={4}>
+          <Text>Loading more resorts...</Text>
+        </Box>
+      )}
     </>
   );
 };

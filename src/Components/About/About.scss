@@ -147,6 +147,7 @@
   .travel {
     margin: 30px;
     display: flex;
+    border: 1px solid #ff6d00  ;
     align-items: center;
     justify-content: space-between;
     padding: 40px;
@@ -196,7 +197,7 @@
       .two,
       .one {
         display: flex;
-        flex-direction: column;
+        // flex-direction: column;
         gap: 20px;
         align-items: center;
 

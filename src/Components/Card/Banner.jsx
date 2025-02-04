@@ -28,7 +28,8 @@ const tours = [
   },
   {
     title: "Beaches",
-    imageUrl: "https://konkanguide.com/admin/img/Chinchani%20beach-1.jpg",
+    imageUrl:
+      "https://sceneloc8.com/wp-content/uploads/2024/03/kelva-beach-3.png",
     colSpan: "md:col-span-1",
     rowSpan: "row-span-1",
     link: "/beach",

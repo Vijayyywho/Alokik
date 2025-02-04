@@ -7,13 +7,15 @@ import {
   Button,
   SimpleGrid,
   Text,
+  Input,
+  VStack,
 } from "@chakra-ui/react";
 
 function AmenitiesSelector({ onSubmit }) {
   const [included, setIncluded] = useState([]);
   const [excluded, setExcluded] = useState([]);
-
-  const amenities = [
+  const [customAmenity, setCustomAmenity] = useState("");
+  const [amenities, setAmenities] = useState([
     "Pet Allowed",
     "Hookah Allowed",
     "Free WIFI",
@@ -39,7 +41,7 @@ function AmenitiesSelector({ onSubmit }) {
     "Suitable for Events",
     "Mobile Network",
     "Music Allowed (Max. 10pm only)",
-  ];
+  ]);
 
   const handleCheckboxChange = (amenity, isIncluded) => {
     if (isIncluded) {
@@ -51,13 +53,20 @@ function AmenitiesSelector({ onSubmit }) {
     }
   };
 
+  const handleAddCustomAmenity = () => {
+    if (customAmenity.trim() && !amenities.includes(customAmenity)) {
+      setAmenities((prev) => [...prev, customAmenity]);
+      setCustomAmenity("");
+    }
+  };
+
   const handleSubmit = () => {
     const data = {
       included: included,
       excluded: excluded,
     };
 
-    onSubmit(data); // Pass data back to NewPostPage
+    onSubmit(data);
   };
 
   return (
@@ -79,6 +88,16 @@ function AmenitiesSelector({ onSubmit }) {
           ))}
         </SimpleGrid>
       </FormControl>
+      <VStack mt={4} spacing={2} align="start">
+        <Input
+          placeholder="Enter custom amenity"
+          value={customAmenity}
+          onChange={(e) => setCustomAmenity(e.target.value)}
+        />
+        <Button colorScheme="blue" onClick={handleAddCustomAmenity}>
+          Add Amenity
+        </Button>
+      </VStack>
       <Button colorScheme="teal" mt={4} onClick={handleSubmit}>
         Submit
       </Button>

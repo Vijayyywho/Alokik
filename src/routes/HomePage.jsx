@@ -13,10 +13,12 @@ import TourGrid from "../Components/Card/Banner";
 import CardSlider from "../Components/Card/CardSlider";
 import NewHomee from "../Components/Home/NewHomee";
 import { listData } from "../Lib/dummydata";
+import { Button } from "@chakra-ui/react";
 
 import TempleDetail from "../Components/Details/Temple";
 import TemplesList from "../Components/Details/Temple";
 import ImageGallery from "../Components/Details/ImgActivity";
+import Featured from "../Components/Featured";
 const HomePage = () => {
   const { postResponse } = useLoaderData();
   const items = postResponse || [];
@@ -114,16 +116,29 @@ const HomePage = () => {
         <AnimatedDiv>
           <motion.h2 className="cardSectionTitle">
             Top Resorts in <span>Palghar</span>
-            <Link to="/list">
-              <p>
-                Explore More
-                <img src="/arrow-up.png" alt="" />
-              </p>
-            </Link>
+            <Link to="/list"></Link>
           </motion.h2>
         </AnimatedDiv>
         <AnimatedDiv>
           <Newlist items={items.slice(0, 4)} />
+          <div className="flex mt-5 justify-center items-center h-10">
+            <Link to="/list">
+              <Button
+                sx={{
+                  bg: "#ef964c",
+                  color: "#fff",
+                  fontWeight: "600",
+                  _hover: {
+                    bg: "#d9773a", // Darker shade for hover
+                    color: "#f0f0f0", // Slightly lighter text color on hover
+                  },
+                }}
+              >
+                View All Resorts
+              </Button>
+            </Link>
+          </div>
+          <Featured />
         </AnimatedDiv>
         <AnimatedDiv>
           <NewHomee />
